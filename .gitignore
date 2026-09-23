@@ -1,0 +1,22 @@
+/node_modules
+/storage/*.key
+/storage/app/*
+/storage/framework/*
+/storage/logs/*
+!/storage/app/.gitignore
+!/storage/framework/.gitignore
+!/storage/logs/.gitignore
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/docs
+/coverage-report
+*.docx
+# macOS system files
+.DS_Store
+**/.DS_Store

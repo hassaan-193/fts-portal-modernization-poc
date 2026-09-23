@@ -1,0 +1,42 @@
+======================================================================
+PROBE 1: RUNTIME STACK & DEPENDENCY OBSOLESCENCE AUDIT
+======================================================================
+
+[1] PHP RUNTIME:
+PHP 7.4.33 (cli) (built: Nov  2 2022 15:06:48) ( NTS Visual C++ 2017 x64 )
+
+[2] LARAVEL FRAMEWORK VERSION:
+Laravel Framework 7.27.0
+
+[3] CRITICAL BACKEND DEPENDENCIES (from composer.json):
+  - php                             : ^7.2.5
+  - laravel/framework               : ^7.3
+  - spatie/laravel-permission       : ^3.4
+  - spatie/laravel-medialibrary     : ^7.0.0
+  - infyomlabs/laravel-generator    : 7.0.x-dev
+  - livewire/livewire               : ^1.3
+  - yajra/laravel-datatables-oracle : ~9.0
+  - barryvdh/laravel-dompdf         : ^0.8.5
+
+[4] CRITICAL FRONTEND DEPENDENCIES (from package.json):
+  - vue                       : ^2.6.10
+  - laravel-mix               : ^4.0.7
+  - bootstrap                 : Not found
+  - jquery                    : Not found
+  - admin-lte                 : Not found
+  - cross-env                 : ^5.1
+  - resolve-url-loader        : ^2.3.1
+  - sass                      : ^1.15.2
+  - vue-template-compiler     : ^2.6.11
+
+[5] OFFICIAL INDUSTRY END-OF-LIFE (EOL) STATUS COMPARISON:
+  * PHP 7.2                  | EOL: November 30, 2020  | Status: EXPIRED (>5 years ago)   | No security fixes; high vulnerability surface
+  * Laravel 7.x              | EOL: March 3, 2021      | Status: EXPIRED (>5 years ago)   | No security patches; incompatible with PHP 8.2+
+  * Vue 2.6.x                | EOL: December 31, 2023  | Status: EXPIRED (>2 years ago)   | Official Vue 2 support terminated upstream
+  * Laravel Mix / Webpack 4  | EOL: 2020               | Status: DEPRECATED               | Superseded by Vite; slow builds, no native ESM
+  * Livewire 1.3             | EOL: 2020               | Status: DEPRECATED               | Superseded by Livewire 3; excessive payload sizes
+  * Spatie Permission 3.4    | EOL: 2020               | Status: OUTDATED                 | Lacks modern tag-based caching features in v6
+
+======================================================================
+PROBE 1 COMPLETE: EMPIRICAL PROOF CAPTURED
+======================================================================

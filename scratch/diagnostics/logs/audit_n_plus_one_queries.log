@@ -1,0 +1,28 @@
+======================================================================
+PROBE 2: DATABASE QUERY PROFILING (N+1 QUERY EXPLOSION AUDIT)
+======================================================================
+
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ (SQL: select * from `purchase_orders` limit 25)
+
+  at D:\FTSITS\ft_portal_base(2)\ft_portal_base\vendor\laravel\framework\src\Illuminate\Database\Connection.php:671
+    667|         // If an exception occurs when attempting to run a query, we'll format the error
+    668|         // message to include the bindings with SQL, which will make this exception a
+    669|         // lot more helpful to the developer instead of just the database's errors.
+    670|         catch (Exception $e) {
+  > 671|             throw new QueryException(
+    672|                 $query, $this->prepareBindings($bindings), $e
+    673|             );
+    674|         }
+    675|
+
+  1   D:\FTSITS\ft_portal_base(2)\ft_portal_base\vendor\doctrine\dbal\lib\Doctrine\DBAL\Driver\PDOConnection.php:31
+      Doctrine\DBAL\Driver\PDOException::("SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+")
+
+  2   D:\FTSITS\ft_portal_base(2)\ft_portal_base\vendor\doctrine\dbal\lib\Doctrine\DBAL\Driver\PDOConnection.php:27
+      PDOException::("SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+")

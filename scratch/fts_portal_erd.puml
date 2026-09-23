@@ -1,0 +1,1272 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+skinparam roundcorner 5
+skinparam classFontSize 11
+skinparam classFontName Calibri
+
+entity "amc_report_system_items" as amc_report_system_items {
+  * id : int(10) unsigned <<PK>>
+  # system_key : varchar(50) <<FK>>
+    item_slug : varchar(191)
+    item_label : varchar(255)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "attendance_approvals" as attendance_approvals {
+  * id : bigint(20) unsigned <<PK>>
+  # attendance_id : bigint(20) unsigned <<FK>>
+  # approved_by : bigint(20) unsigned <<FK>>
+    action : enum('approved','rejected')
+    informed : enum('informed','uninformed')
+    specific_reason : varchar(191)
+    reason : text
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "attendance_labor_details" as attendance_labor_details {
+  * id : bigint(20) unsigned <<PK>>
+  # attendance_id : bigint(20) unsigned <<FK>>
+  # labor_id : int(10) unsigned <<FK>>
+    overtime_hours : decimal(5,2)
+  # site_id : bigint(20) unsigned <<FK>>
+    custom_site_name : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "attendance_sessions" as attendance_sessions {
+  * id : bigint(20) unsigned <<PK>>
+  # user_id : bigint(20) unsigned <<FK>>
+  # session_date : date <<FK>>
+    clock_in_time : datetime
+    clock_in_latitude : decimal(10,8)
+    clock_in_longitude : decimal(11,8)
+    clock_in_distance_meters : decimal(8,2)
+    clock_out_time : datetime
+    clock_out_latitude : decimal(10,8)
+    clock_out_longitude : decimal(11,8)
+    clock_out_distance_meters : decimal(8,2)
+    duration_minutes : int(11)
+  # shift_window : enum('shift_1','shift_2') <<FK>>
+  # is_late : tinyint(1) <<FK>>
+    work_mode : enum('split_shift','continuous')
+  # session_status : enum('open','closed') <<FK>>
+    notes : text
+    created_at : timestamp
+    updated_at : timestamp
+    deleted_at : timestamp
+}
+
+entity "attendances" as attendances {
+  * id : bigint(20) unsigned <<PK>>
+  # labor_id : int(10) unsigned <<FK>>
+  # foreman_id : bigint(20) unsigned <<FK>>
+  # approved_by : bigint(20) unsigned <<FK>>
+  # attendance_date : date <<FK>>
+  # status : enum('pending','approved','rejected') <<FK>>
+    notes : text
+    marked_at : timestamp
+    approved_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "balance_accounts" as balance_accounts {
+  * id : bigint(20) unsigned <<PK>>
+    balance : double
+  # type : varchar(191) <<FK>>
+  # user_id : bigint(20) unsigned <<FK>>
+    code : varchar(191)
+    account_type : varchar(191)
+}
+
+entity "balance_transactions" as balance_transactions {
+  * id : bigint(20) unsigned <<PK>>
+  # account_id : bigint(20) unsigned <<FK>>
+  # extra_account_id : bigint(20) unsigned <<FK>>
+    amount : double
+    data : longtext
+    created_at : timestamp
+  # reference_type : varchar(191) <<FK>>
+  # reference_id : bigint(20) unsigned <<FK>>
+}
+
+entity "comments" as comments {
+  * id : int(10) unsigned <<PK>>
+  # commentable_id : bigint(20) unsigned <<FK>>
+    commentable_type : varchar(191)
+    comments : text
+    status : int(11)
+  # user_id : int(11) <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "companies" as companies {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    email : varchar(191)
+    contact_person : varchar(191)
+    contact_no : varchar(191)
+    contact_no_two : varchar(191)
+    vat_no : varchar(191)
+    location : text
+    file : text
+    billing_address : text
+    billing_contact_person : varchar(191)
+    billing_pob : varchar(191)
+    billing_email : varchar(191)
+    shipping_address : varchar(191)
+    shipping_contact_person : varchar(191)
+    shipping_pob : varchar(191)
+    shipping_email : varchar(191)
+    payment_terms : varchar(191)
+    credit_limit : varchar(191)
+    password : varchar(191)
+    remember_token : varchar(100)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "device_tokens" as device_tokens {
+  * id : int(10) unsigned <<PK>>
+  # user_id : bigint(20) unsigned <<FK>>
+    token : varchar(512)
+    platform : varchar(20)
+    device_name : varchar(191)
+    last_used_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "documents" as documents {
+  * id : bigint(20) unsigned <<PK>>
+    name : varchar(191)
+    type : varchar(191)
+    date : date
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "drawing_received_contributions" as drawing_received_contributions {
+  * id : int(10) unsigned <<PK>>
+  # drawing_received_id : int(10) unsigned <<FK>>
+  # contributed_by_id : bigint(20) unsigned <<FK>>
+  # contribution_type : varchar(191) <<FK>>
+    description : longtext
+    status : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "drawing_receiveds" as drawing_receiveds {
+  * id : int(10) unsigned <<PK>>
+  # lpoin_id : int(10) unsigned <<FK>>
+  # responsible_engineer_id : bigint(20) unsigned <<FK>>
+    type_of_work : varchar(191)
+    start_date : date
+    review_comments_date : date
+    approval_date : date
+  # status : varchar(191) <<FK>>
+    notes : longtext
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "employees" as employees {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    email : varchar(191)
+    code : varchar(191)
+    contact_no : varchar(191)
+    balance : double
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "failed_jobs" as failed_jobs {
+  * id : bigint(20) unsigned <<PK>>
+    connection : text
+    queue : text
+    payload : longtext
+    exception : longtext
+    failed_at : timestamp
+}
+
+entity "inquiries" as inquiries {
+  * id : bigint(20) unsigned <<PK>>
+    inquiry_no : varchar(191)
+  # created_by : bigint(20) unsigned <<FK>>
+    client_name : varchar(191)
+    phone : varchar(20)
+    email : varchar(191)
+    location : text
+    project : varchar(191)
+    inquiry_type : enum('Project','AMC','Installation','Other')
+    other_type : varchar(191)
+    source : enum('Call','Email','Walk-in','Website','Referral')
+    expected_price : decimal(15,2)
+    status : enum('New','Assigned','Under Review','Site Visit Pending','Site Visit Done','Sent to Sales','Quotation Created','Under Follow-up','Won','Lost','Closed')
+    priority : enum('Low','Medium','High')
+    follow_up_date : date
+    expected_closing_date : date
+    assigned_department : varchar(191)
+    notes : text
+    metadata : longtext
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "inquiry_activities" as inquiry_activities {
+  * id : bigint(20) unsigned <<PK>>
+  # inquiry_id : bigint(20) unsigned <<FK>>
+  # user_id : bigint(20) unsigned <<FK>>
+    action : varchar(191)
+    description : text
+    metadata : longtext
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "inquiry_department_reviews" as inquiry_department_reviews {
+  * id : bigint(20) unsigned <<PK>>
+  # inquiry_id : bigint(20) unsigned <<FK>>
+    assigned_department : varchar(191)
+  # assigned_to : bigint(20) unsigned <<FK>>
+    assignment_date : timestamp
+    current_status : varchar(191)
+    internal_comments : text
+    priority : enum('Low','Medium','High')
+    response_deadline : timestamp
+    technical_review_status : varchar(191)
+    site_visit_required : tinyint(1)
+    proposed_visit_date : date
+  # visit_assigned_to : bigint(20) unsigned <<FK>>
+    visit_notes : text
+  # reviewed_by : bigint(20) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "inquiry_engineer_reports" as inquiry_engineer_reports {
+  * id : bigint(20) unsigned <<PK>>
+  # inquiry_id : bigint(20) unsigned <<FK>>
+    visit_completed : tinyint(1)
+    site_condition_notes : text
+    scope_understanding : text
+    materials_required : text
+    challenges_risks : text
+    estimated_cost : decimal(15,2)
+  # submitted_by : bigint(20) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "inquiry_follow_ups" as inquiry_follow_ups {
+  * id : bigint(20) unsigned <<PK>>
+  # inquiry_id : bigint(20) unsigned <<FK>>
+    follow_up_date : date
+    follow_up_notes : text
+    client_feedback : text
+    status : varchar(191)
+  # created_by : bigint(20) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "inquiry_quotations" as inquiry_quotations {
+  * id : bigint(20) unsigned <<PK>>
+  # inquiry_id : bigint(20) unsigned <<FK>>
+    quotation_amount : decimal(15,2)
+    scope_of_work : text
+    terms_conditions : text
+    validity_date : date
+  # created_by : bigint(20) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "inquiry_routing_configs" as inquiry_routing_configs {
+  * id : bigint(20) unsigned <<PK>>
+    inquiry_type : varchar(191)
+    department : varchar(191)
+    is_active : tinyint(1)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "invoice_banks" as invoice_banks {
+  * id : int(10) unsigned <<PK>>
+    beneficary_account_name : varchar(191)
+    bank_name : varchar(191)
+    bank_branch : varchar(191)
+    account_no : varchar(191)
+    account_currency : varchar(191)
+    iban_no : varchar(191)
+    swift_code : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "invoice_product_details" as invoice_product_details {
+  * id : int(10) unsigned <<PK>>
+  # invoice_id : int(10) unsigned <<FK>>
+    product : varchar(191)
+    unit : varchar(191)
+    qty : int(11)
+    rate : double
+    amount : double
+    vat : double
+    total_amount : double
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "invoice_request_products" as invoice_request_products {
+  * id : int(10) unsigned <<PK>>
+  # request_id : int(10) unsigned <<FK>>
+    product : varchar(191)
+    unit : varchar(191)
+    qty : int(11)
+    rate : double
+    amount : double
+    vat : double
+    total_amount : double
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "invoice_requests" as invoice_requests {
+  * id : int(10) unsigned <<PK>>
+  # user_id : bigint(20) unsigned <<FK>>
+  # requestable_id : int(10) unsigned <<FK>>
+    requestable_type : varchar(191)
+    note : text
+    payment_terms : varchar(191)
+    delivery_date : date
+    status : int(11)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "invoice_service_details" as invoice_service_details {
+  * id : int(10) unsigned <<PK>>
+  # invoice_id : int(10) unsigned <<FK>>
+    description : text
+    amount : double
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "invoice_types" as invoice_types {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "invoices" as invoices {
+  * id : int(10) unsigned <<PK>>
+    invoice_no : varchar(191)
+  # invoice_type_id : int(10) unsigned <<FK>>
+  # quotation_id : int(10) unsigned <<FK>>
+  # invoice_request_id : int(10) unsigned <<FK>>
+    start_date : date
+    end_date : date
+    delivery_date : date
+    currency : varchar(191)
+    payment_terms : varchar(191)
+    amount_in_word : varchar(191)
+    note1 : text
+    note2 : text
+  # invoice_bank_id : int(10) unsigned <<FK>>
+    amount : double
+    vat : double
+    total_amount : double
+    status : int(11)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "labor_requests" as labor_requests {
+  * id : int(10) unsigned <<PK>>
+  # labor_id : int(10) unsigned <<FK>>
+    type : varchar(191)
+    start_date : date
+    end_date : date
+    advance_money : double
+    note : text
+    status : tinyint(1)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "labour_assignments" as labour_assignments {
+  * id : bigint(20) unsigned <<PK>>
+  # labor_id : int(10) unsigned <<FK>>
+  # project_id : int(10) unsigned <<FK>>
+  # visit_schedule_id : bigint(20) unsigned <<FK>>
+    assignment_start_date : date
+    assignment_end_date : date
+    created_at : timestamp
+    updated_at : timestamp
+    hours_worked : int(11)
+    overtime_hours : int(11)
+}
+
+entity "letters" as letters {
+  * id : bigint(20) unsigned <<PK>>
+    ref_no : varchar(191)
+    days_deduct : int(10) unsigned
+  # staff_profile_id : int(10) unsigned <<FK>>
+    type : enum('warning','appreciation','general_notice','poor_performance_notice','accommodation_notice','vehicle_notice','attendance_notice','weather_notice','eid_holidays_notice')
+    title : varchar(191)
+    content : text
+    issued_by : varchar(191)
+    issued_at : date
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "lookups" as lookups {
+  * id : bigint(20) unsigned <<PK>>
+    name : varchar(191)
+    tag : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "lpo_out_types" as lpo_out_types {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "lpoins" as lpoins {
+  * id : int(10) unsigned <<PK>>
+  # quotation_id : int(10) unsigned <<FK>>
+    ref_no : varchar(191)
+    payment_terms : varchar(191)
+    civil_defence_fee : double
+    government_fee : double
+    adjustment_fee : double
+    date_issue : date
+    date_due : date
+    amount : double(8,2)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "lpoouts" as lpoouts {
+  * id : int(10) unsigned <<PK>>
+    lpo_invoice_no : varchar(191)
+    name : varchar(191)
+  # lpo_out_type_id : int(10) unsigned <<FK>>
+  # project_id : int(10) unsigned <<FK>>
+  # vendor_id : int(10) unsigned <<FK>>
+    trn_no : varchar(191)
+    kindly_attn : varchar(191)
+    date : date
+    amount : double
+    terms : longtext
+    payment_type : varchar(191)
+    cheque_date : date
+    items : longtext
+    pricing_mode : varchar(191)
+    has_item_code : tinyint(1)
+    status : enum('Pending','Approved','Not Approved')
+    revision_number : int(11)
+  # parent_lpoout_id : bigint(20) unsigned <<FK>>
+    is_latest_revision : tinyint(1)
+    revised_by : bigint(20) unsigned
+    revision_reason : text
+    revised_at : timestamp
+    lpo_payment_preference_option : varchar(191)
+    lpo_payment_preference : varchar(191)
+    lpo_pdc_number_of_days : int(11)
+    lpo_pdc_payment_option : varchar(191)
+    vat : double
+    total_amount : double
+    file : text
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "media" as media {
+  * id : bigint(20) unsigned <<PK>>
+  # model_type : varchar(191) <<FK>>
+  # model_id : bigint(20) unsigned <<FK>>
+    collection_name : varchar(191)
+    name : varchar(191)
+    file_name : varchar(191)
+    mime_type : varchar(191)
+    disk : varchar(191)
+    size : bigint(20) unsigned
+    manipulations : longtext
+    custom_properties : longtext
+    responsive_images : longtext
+    order_column : int(10) unsigned
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "migrations" as migrations {
+  * id : int(10) unsigned <<PK>>
+    migration : varchar(191)
+    batch : int(11)
+}
+
+entity "model_has_permissions" as model_has_permissions {
+  * permission_id : bigint(20) unsigned <<PK>>
+  * model_type : varchar(191) <<PK>>
+  * model_id : bigint(20) unsigned <<PK>>
+}
+
+entity "model_has_roles" as model_has_roles {
+  * role_id : bigint(20) unsigned <<PK>>
+  * model_type : varchar(191) <<PK>>
+  * model_id : bigint(20) unsigned <<PK>>
+}
+
+entity "monthly_staff_reports" as monthly_staff_reports {
+  * id : bigint(20) unsigned <<PK>>
+  # staff_id : int(10) unsigned <<FK>>
+    month : tinyint(3) unsigned
+    year : smallint(5) unsigned
+    safety_avg : double(8,2)
+    communication_avg : double(8,2)
+    attendance_avg : double(8,2)
+    time_management_avg : double(8,2)
+    job_responsibility_avg : double(8,2)
+    material_handling_avg : double(8,2)
+    document_handling_avg : double(8,2)
+    competency_avg : double(8,2)
+    final_score : double(8,2)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "notifications" as notifications {
+  * id : char(36) <<PK>>
+    type : varchar(191)
+  # notifiable_type : varchar(191) <<FK>>
+  # notifiable_id : bigint(20) unsigned <<FK>>
+    data : text
+    read_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "order_items" as order_items {
+  * id : bigint(20) unsigned <<PK>>
+  # order_id : bigint(20) unsigned <<FK>>
+    item_description : varchar(191)
+    unit : varchar(191)
+    quantity : double(8,2)
+    unit_price : double(8,2)
+    total : double(8,2)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "orders" as orders {
+  * id : bigint(20) unsigned <<PK>>
+    date : date
+    trn : varchar(191)
+  # vendor_id : int(10) unsigned <<FK>>
+    attn : varchar(191)
+    ship_to : varchar(191)
+    address : text
+    contact : varchar(191)
+    ref_no : varchar(191)
+    total_amount : decimal(14,2)
+    discount : decimal(14,2)
+    total_after_discount : decimal(14,2)
+    vat : decimal(14,2)
+    total_with_vat : decimal(14,2)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "password_resets" as password_resets {
+  # email : varchar(191) <<FK>>
+    token : varchar(191)
+    created_at : timestamp
+}
+
+entity "payment_booking_approvals" as payment_booking_approvals {
+  * id : int(10) unsigned <<PK>>
+  # payment_booking_id : int(10) unsigned <<FK>>
+    level : tinyint(3) unsigned
+  # user_id : bigint(20) unsigned <<FK>>
+    decision : tinyint(3) unsigned
+    note : text
+    decided_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "payment_bookings" as payment_bookings {
+  * id : int(10) unsigned <<PK>>
+    reference_no : varchar(40)
+  # booking_type : varchar(10) <<FK>>
+    payee : varchar(191)
+    payment_against : varchar(191)
+    purpose : text
+    amount : decimal(15,2)
+    project_cost_centre : varchar(191)
+    booking_date : date
+    cheque_number : varchar(60)
+    cheque_date : date
+    bank_account : varchar(191)
+  # release_date : date <<FK>>
+    cash_account : varchar(191)
+  # payment_date : date <<FK>>
+  # status : tinyint(3) unsigned <<FK>>
+  # created_by : bigint(20) unsigned <<FK>>
+    submitted_at : timestamp
+    verified_at : timestamp
+    approved_at : timestamp
+    rejected_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+    deleted_at : timestamp
+}
+
+entity "payment_invoices" as payment_invoices {
+  * id : int(10) unsigned <<PK>>
+    type : varchar(191)
+    invoice_no : varchar(191)
+  # lpoout_id : int(10) unsigned <<FK>>
+  # invoice_request_id : int(11) <<FK>>
+  # vendor_id : int(11) <<FK>>
+  # project_id : int(11) <<FK>>
+    start_date : date
+    end_date : date
+    amount : double
+    vat : double
+    total_amount : double
+    note : text
+    status : int(11)
+    is_historical : tinyint(1)
+    source_reference : varchar(191)
+    source_date : date
+    historical_party : varchar(191)
+    historical_project : varchar(191)
+    created_by : bigint(20) unsigned
+    document_path : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "payrolls" as payrolls {
+  * id : int(10) unsigned <<PK>>
+    date : date
+  # member_id : int(10) unsigned <<FK>>
+    absents : int(11)
+    hours : double
+    plus_adjustment : double
+    minus_adjustment : double
+    total_amount : double
+    note : text
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "permissions" as permissions {
+  * id : bigint(20) unsigned <<PK>>
+    name : varchar(191)
+    guard_name : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "petty_cash_expenses" as petty_cash_expenses {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    category : varchar(191)
+    amount : double(8,2)
+    date : date
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "petty_cashes" as petty_cashes {
+  * id : int(10) unsigned <<PK>>
+    voucher_no : varchar(191)
+  # account_id : int(10) unsigned <<FK>>
+  # vendor_id : int(10) unsigned <<FK>>
+  # user_id : bigint(20) <<FK>>
+  # project_id : int(10) unsigned <<FK>>
+    date_time : timestamp
+    type : int(11)
+    description : text
+    amount : double(8,2)
+    vat : double(8,2)
+    total_amount : double(8,2)
+    is_advance : int(11)
+    is_user_deduction : int(11)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "products" as products {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    price : double
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "project_extension" as project_extension {
+  * id : bigint(20) unsigned <<PK>>
+    name : varchar(191)
+    value : double
+  # project_id : int(10) unsigned <<FK>>
+  # quotation_id : int(10) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "project_lpoout" as project_lpoout {
+  * id : bigint(20) unsigned <<PK>>
+  # project_id : int(10) unsigned <<FK>>
+  # lpoout_id : int(10) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "project_types" as project_types {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "projectreports" as projectreports {
+  * id : int(10) unsigned <<PK>>
+    reference_number : varchar(191)
+    date : date
+    inspector_visiting_time : time
+    inspector_leaving_time : time
+  # company_id : int(10) unsigned <<FK>>
+    is_manual_client : tinyint(1)
+    manual_client_name : varchar(191)
+  # project_id : int(10) unsigned <<FK>>
+  # visit_schedule_id : bigint(20) unsigned <<FK>>
+    is_emergency_visit : tinyint(1)
+    emergency_visit_date : date
+    amc_type : enum('existing','new')
+    site_location : varchar(191)
+    site_name : varchar(191)
+    used_items : text
+    required_items : text
+    block_info : longtext
+    note : text
+    client_signature : text
+    file_path : longtext
+    status : enum('draft','pending','approved','disapproved')
+  # created_by : bigint(20) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+    fire_alarm_data : longtext
+    fire_fighting_data : longtext
+    fm200_data : longtext
+    foam_tank_data : longtext
+    voice_evacuation_data : longtext
+    emergency_lighting_data : longtext
+    system_interfacing_data : longtext
+    exit_route_data : longtext
+    storage_conditions_data : longtext
+    pump_data : longtext
+    deluge_data : longtext
+    urgent_summary : longtext
+    photos_data : longtext
+    scope_data : longtext
+    next_due_dates : longtext
+    notes_used_items : text
+    next_inspection_due : date
+    expiry_update_required_on : date
+    client_eid_details : varchar(191)
+    client_phone : varchar(191)
+}
+
+entity "projects" as projects {
+  * id : int(10) unsigned <<PK>>
+    date : date
+  # quotation_id : int(10) unsigned <<FK>>
+  # project_type_id : int(10) unsigned <<FK>>
+    subject : varchar(191)
+    payment_terms : varchar(191)
+    labour_charges : double
+    material_charges : double
+    project_source : varchar(191)
+    project_estimation : varchar(191)
+  # user_id : int(11) <<FK>>
+    note : text
+    created_at : timestamp
+    updated_at : timestamp
+    category : varchar(191)
+    visits : int(11)
+    visit_schedule : longtext
+}
+
+entity "purchase_orders" as purchase_orders {
+  * id : bigint(20) unsigned <<PK>>
+    request_number : varchar(191)
+    request_type : varchar(191)
+  # quotation_id : bigint(20) <<FK>>
+  # project_id : bigint(20) <<FK>>
+    other_info : text
+    created_by : bigint(20)
+    date : date
+    due_date : date
+    delivery_date : date
+    items : longtext
+    total_amount : decimal(15,2)
+    status : varchar(191)
+    urgency_level : enum('normal','urgent')
+    department_status : varchar(191)
+    department_notes : text
+    sent_back_notes : text
+    sent_back_at : timestamp
+    sent_back_by : bigint(20)
+    sent_back_count : int(10) unsigned
+  # admin_id : bigint(20) <<FK>>
+    admin_notes : text
+  # lpout_id : int(10) unsigned <<FK>>
+  # revised_from_lpoout_id : int(10) unsigned <<FK>>
+    lpout_name : varchar(191)
+  # lpout_vendor_id : bigint(20) <<FK>>
+    lpout_trn_no : varchar(191)
+    lpout_kindly_attn : varchar(191)
+    lpout_date : date
+    lpout_payment_type : varchar(191)
+    lpout_cheque_date : date
+    lpout_vat : tinyint(4)
+    lpout_payment_preference_option : varchar(191)
+    lpout_payment_preference : varchar(191)
+    lpout_pdc_number_of_days : int(11)
+    lpout_pdc_payment_option : varchar(191)
+    lpout_items : longtext
+    lpout_pricing_mode : varchar(191)
+    lpout_manual_total : decimal(15,2)
+    has_item_code : tinyint(1)
+    lpout_terms : longtext
+    payment_preference : text
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "qr_staff_attendances" as qr_staff_attendances {
+  * id : bigint(20) unsigned <<PK>>
+  # staff_id : bigint(20) unsigned <<FK>>
+  # scanned_by : bigint(20) unsigned <<FK>>
+  # site_id : bigint(20) unsigned <<FK>>
+    custom_site_name : varchar(191)
+  # attendance_date : date <<FK>>
+    check_in_time : datetime
+    check_out_time : datetime
+    duration_minutes : int(11)
+    overtime_minutes : int(11)
+    shift_end_time : time
+  # status : enum('checked_in','checked_out') <<FK>>
+  # review_status : enum('pending','approved','rejected') <<FK>>
+  # reviewed_by : bigint(20) unsigned <<FK>>
+    reviewed_at : datetime
+    review_notes : text
+  # final_overtime_source : enum('manual','qr','custom') <<FK>>
+    final_overtime_minutes : int(11)
+  # finalized_by : bigint(20) unsigned <<FK>>
+    finalized_at : datetime
+    final_decision_notes : text
+    notes : text
+    created_at : timestamp
+    updated_at : timestamp
+    deleted_at : timestamp
+}
+
+entity "quotation_products" as quotation_products {
+  * id : int(10) unsigned <<PK>>
+  # quotation_id : int(10) unsigned <<FK>>
+  # product_id : int(10) unsigned <<FK>>
+    quantity : int(11)
+    unit_price : decimal(10,2)
+    total_price : decimal(10,2)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "quotations" as quotations {
+  * id : int(10) unsigned <<PK>>
+  # reference_project_id : int(10) unsigned <<FK>>
+    name : varchar(191)
+  # company_id : int(10) unsigned <<FK>>
+    ref_no : varchar(191)
+  # quotation_type_id : int(11) <<FK>>
+    quotation_company : int(11)
+    amount : double
+    vat : double
+    total_amount : double
+    date : date
+    subject : varchar(191)
+    location : text
+    file : text
+    payment : text
+    exclusion : text
+    status : int(10) unsigned
+  # approved_by : bigint(20) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+    category : varchar(191)
+    number_of_visits : int(11)
+}
+
+entity "request_approvals" as request_approvals {
+  * id : int(10) unsigned <<PK>>
+  # request_type : varchar(20) <<FK>>
+  # request_id : int(10) unsigned <<FK>>
+  # user_id : int(10) unsigned <<FK>>
+    decision : tinyint(3) unsigned
+    note : text
+    decided_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "request_forms" as request_forms {
+  * id : int(10) unsigned <<PK>>
+    date_time : timestamp
+  # user_id : bigint(20) unsigned <<FK>>
+    name : varchar(191)
+    note : text
+    comments : text
+    status : int(11)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "role_has_permissions" as role_has_permissions {
+  * permission_id : bigint(20) unsigned <<PK>>
+  * role_id : bigint(20) unsigned <<PK>>
+}
+
+entity "roles" as roles {
+  * id : bigint(20) unsigned <<PK>>
+    name : varchar(191)
+    guard_name : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "sites" as sites {
+  * id : bigint(20) unsigned <<PK>>
+    site_name : varchar(191)
+  # engineer_id : bigint(20) unsigned <<FK>>
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "staf_dates" as staf_dates {
+  * id : int(10) unsigned <<PK>>
+  # staff_id : int(11) <<FK>>
+    start_date : date
+    end_date : date
+    days : int(11)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "staf_profile" as staf_profile {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    staf_type : varchar(191)
+    last_name : varchar(191)
+    nationality : varchar(191)
+    gender : varchar(191)
+    joining_date : date
+    dob : date
+    passport_expiry : date
+    visa_expiry : date
+    emirates_id_expiry : date
+    labor_card_expiry : date
+    driver_permit_expiry : date
+    last_vacation_start : date
+    last_vacation_end : date
+    last_vacation_days : int(11)
+    last_increment : date
+    last_increment_amount : int(11)
+    basic_salary : double
+    total_salary : double
+    overtime_rate : double
+    created_at : timestamp
+    updated_at : timestamp
+    mobile_no : varchar(191)
+    home_mobile_no : varchar(191)
+    exclude_from_expiry : tinyint(1)
+}
+
+entity "staff_ratings" as staff_ratings {
+  * id : bigint(20) unsigned <<PK>>
+  # staff_id : int(10) unsigned <<FK>>
+  # engineer_id : bigint(20) unsigned <<FK>>
+    month : tinyint(3) unsigned
+    year : smallint(5) unsigned
+    safety_compliance : tinyint(3) unsigned
+    communication : tinyint(3) unsigned
+    attendance : tinyint(3) unsigned
+    time_management : tinyint(3) unsigned
+    job_responsibility : tinyint(3) unsigned
+    material_handling : tinyint(3) unsigned
+    document_handling : tinyint(3) unsigned
+    competency : tinyint(3) unsigned
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "staff_requests" as staff_requests {
+  * id : int(10) unsigned <<PK>>
+  # staf_id : int(10) unsigned <<FK>>
+    type : varchar(191)
+    start_date : date
+    end_date : date
+    advance_money : double
+    device_type : varchar(191)
+    letter_type : varchar(191)
+    note : text
+    status : tinyint(1)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "tasks" as tasks {
+  * id : bigint(20) unsigned <<PK>>
+    start_date : datetime
+    end_date : datetime
+    title : varchar(191)
+    assigned : bigint(20)
+    description : varchar(191)
+    status : tinyint(1)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "tickets" as tickets {
+  * id : bigint(20) unsigned <<PK>>
+  # staf_id : int(10) unsigned <<FK>>
+    ticket_date : date
+    agent_name : varchar(191)
+    travel_type : enum('One Way','Two Way')
+    travel_date : date
+    return_date : date
+    amount : decimal(10,2)
+    vat : decimal(10,2)
+    total_value : decimal(10,2)
+    payment_status : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+  # updated_by : bigint(20) unsigned <<FK>>
+}
+
+entity "transactions" as transactions {
+  * id : int(10) unsigned <<PK>>
+    date_time : timestamp
+    type : varchar(191)
+  # transactionable_id : int(11) <<FK>>
+    transactionable_type : varchar(191)
+    expense_account : int(10) unsigned
+  # account_id : int(10) unsigned <<FK>>
+    transaction_type : int(11)
+    payment_type : int(11)
+    payment_no : varchar(191)
+    clearance_date : varchar(191)
+    bank_name : varchar(191)
+    vat : double
+    amount : double
+    total : double
+    note : text
+    from_account : int(11)
+    status : int(11)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "users" as users {
+  * id : bigint(20) unsigned <<PK>>
+    name : varchar(191)
+    email : varchar(191)
+    email_verified_at : timestamp
+    password : varchar(191)
+    image : varchar(191)
+    remember_token : varchar(100)
+    created_at : timestamp
+    updated_at : timestamp
+    firebase_token : varchar(191)
+    api_token : varchar(80)
+  # staf_profile_id : int(10) unsigned <<FK>>
+    balance : double(8,2)
+    deleted_at : timestamp
+}
+
+entity "vendors" as vendors {
+  * id : int(10) unsigned <<PK>>
+    name : varchar(191)
+    email : varchar(191)
+    emails : longtext
+    contact_person : varchar(191)
+    contact_no : varchar(191)
+    contact_no_two : varchar(191)
+    vat_no : varchar(191)
+    payment_terms : varchar(191)
+    terms_and_conditions : longtext
+    credit_limit : varchar(191)
+    location : text
+    file : text
+    payment_preference : varchar(191)
+    pdc_number_of_days : int(11)
+    pdc_payment_option : varchar(191)
+    vendor_specialization : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "verify_emails" as verify_emails {
+    email : varchar(191)
+    token : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "visit_schedule_comments" as visit_schedule_comments {
+  * id : bigint(20) unsigned <<PK>>
+  # visit_schedule_id : bigint(20) unsigned <<FK>>
+    comment : text
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "visit_schedule_history" as visit_schedule_history {
+  * id : bigint(20) unsigned <<PK>>
+  # project_id : int(10) unsigned <<FK>>
+  # visit_schedule_id : bigint(20) unsigned <<FK>>
+    visit_date : date
+    status : varchar(191)
+    company_name : varchar(191)
+    project_name : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "visit_schedules" as visit_schedules {
+  * id : bigint(20) unsigned <<PK>>
+  # project_id : int(10) unsigned <<FK>>
+    visit_date : date
+    status : enum('pending','done','upcoming')
+    file_uploaded : tinyint(1)
+    file_path : varchar(191)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' --------------------------------------------------------
+' Relationship Links
+' --------------------------------------------------------
+
+attendances ||--o{ attendance_approvals : "attendance_id"
+attendances ||--o{ attendance_labor_details : "attendance_id"
+balance_accounts ||--o{ balance_transactions : "account_id"
+balance_accounts ||--o{ balance_transactions : "extra_account_id"
+companies ||--o{ invoices : "company_id"
+companies ||--o{ projectreports : "company_id"
+companies ||--o{ projects : "company_id"
+companies ||--o{ quotations : "company_id"
+drawing_receiveds ||--o{ drawing_received_contributions : "drawing_received_id"
+inquiries ||--o{ inquiry_activities : "inquiry_id"
+inquiries ||--o{ inquiry_department_reviews : "inquiry_id"
+inquiries ||--o{ inquiry_engineer_reports : "inquiry_id"
+inquiries ||--o{ inquiry_follow_ups : "inquiry_id"
+inquiries ||--o{ inquiry_quotations : "inquiry_id"
+inquiries ||--o{ quotations : "inquiry_id"
+invoice_requests ||--o{ invoice_request_products : "request_id"
+invoice_types ||--o{ invoices : "invoice_type_id"
+invoices ||--o{ invoice_product_details : "invoice_id"
+invoices ||--o{ invoice_service_details : "invoice_id"
+lpo_out_types ||--o{ lpoouts : "lpo_out_type_id"
+lpoins ||--o{ drawing_receiveds : "lpoin_id"
+lpoouts ||--o{ payment_invoices : "lpoout_id"
+lpoouts ||--o{ project_lpoout : "lpoout_id"
+lpoouts ||--o{ purchase_orders : "lpout_id"
+lpoouts ||--o{ purchase_orders : "revised_from_lpoout_id"
+orders ||--o{ order_items : "order_id"
+payment_bookings ||--o{ payment_booking_approvals : "payment_booking_id"
+permissions ||--o{ model_has_permissions : "permission_id"
+permissions ||--o{ role_has_permissions : "permission_id"
+products ||--o{ quotation_products : "product_id"
+projects ||--o{ invoices : "project_id"
+projects ||--o{ labour_assignments : "project_id"
+projects ||--o{ lpoouts : "project_id"
+projects ||--o{ project_extension : "project_id"
+projects ||--o{ project_lpoout : "project_id"
+projects ||--o{ projectreports : "project_id"
+projects ||--o{ purchase_orders : "project_id"
+projects ||--o{ quotations : "reference_project_id"
+projects ||--o{ visit_schedule_history : "project_id"
+projects ||--o{ visit_schedules : "project_id"
+quotations ||--o{ invoices : "quotation_id"
+quotations ||--o{ lpoins : "quotation_id"
+quotations ||--o{ project_extension : "quotation_id"
+quotations ||--o{ projects : "quotation_id"
+quotations ||--o{ quotation_products : "quotation_id"
+roles ||--o{ model_has_roles : "role_id"
+roles ||--o{ role_has_permissions : "role_id"
+sites ||--o{ qr_staff_attendances : "site_id"
+staf_profile ||--o{ attendance_labor_details : "labor_id"
+staf_profile ||--o{ attendances : "labor_id"
+staf_profile ||--o{ labor_requests : "labor_id"
+staf_profile ||--o{ labour_assignments : "labor_id"
+staf_profile ||--o{ letters : "staff_profile_id"
+staf_profile ||--o{ monthly_staff_reports : "staff_id"
+staf_profile ||--o{ payrolls : "member_id"
+staf_profile ||--o{ qr_staff_attendances : "staff_id"
+staf_profile ||--o{ staff_ratings : "staff_id"
+staf_profile ||--o{ staff_requests : "staf_id"
+staf_profile ||--o{ tickets : "staf_id"
+staf_profile ||--o{ users : "staf_profile_id"
+users ||--o{ attendance_approvals : "approved_by"
+users ||--o{ attendances : "approved_by"
+users ||--o{ attendances : "foreman_id"
+users ||--o{ balance_accounts : "user_id"
+users ||--o{ drawing_received_contributions : "contributed_by_id"
+users ||--o{ drawing_receiveds : "responsible_engineer_id"
+users ||--o{ inquiries : "created_by"
+users ||--o{ inquiry_activities : "user_id"
+users ||--o{ inquiry_department_reviews : "assigned_to"
+users ||--o{ inquiry_department_reviews : "reviewed_by"
+users ||--o{ inquiry_department_reviews : "visit_assigned_to"
+users ||--o{ inquiry_engineer_reports : "submitted_by"
+users ||--o{ inquiry_follow_ups : "created_by"
+users ||--o{ inquiry_quotations : "created_by"
+users ||--o{ invoice_requests : "user_id"
+users ||--o{ payment_booking_approvals : "user_id"
+users ||--o{ payment_bookings : "user_id"
+users ||--o{ qr_staff_attendances : "scanned_by"
+users ||--o{ quotations : "approved_by"
+users ||--o{ request_forms : "user_id"
+users ||--o{ sites : "engineer_id"
+users ||--o{ staf_profile : "user_id"
+users ||--o{ staff_ratings : "engineer_id"
+users ||--o{ tickets : "updated_by"
+vendors ||--o{ lpoouts : "vendor_id"
+vendors ||--o{ orders : "vendor_id"
+vendors ||--o{ petty_cashes : "vendor_id"
+vendors ||--o{ purchase_orders : "vendor_id"
+visit_schedules ||--o{ labour_assignments : "visit_schedule_id"
+visit_schedules ||--o{ projectreports : "visit_schedule_id"
+visit_schedules ||--o{ visit_schedule_comments : "visit_schedule_id"
+visit_schedules ||--o{ visit_schedule_history : "visit_schedule_id"
+
+@enduml

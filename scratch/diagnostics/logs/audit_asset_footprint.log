@@ -1,0 +1,37 @@
+======================================================================
+PROBE 6: MONOLITHIC ASSET BUNDLE & PLUGINS FOOTPRINT AUDIT
+======================================================================
+
+[1] PUBLIC PLUGINS DIRECTORY AUDIT (public/plugins/):
+    Total Distinct Plugin Folders : 59 plugins
+    Total Static Files in Plugins : 1715 files
+    Total Disk Footprint          : 46.07 MB
+
+    Top 10 Heaviest Vendored Plugins:
+      * pdfmake                    :  10.81 MB (5 files)
+      * flag-icon-css              :   4.57 MB (516 files)
+      * jqvmap                     :   4.04 MB (32 files)
+      * summernote                 :   3.16 MB (101 files)
+      * fontawesome-free           :   2.97 MB (29 files)
+      * moment                     :   1.94 MB (132 files)
+      * bootstrap                  :   1.57 MB (8 files)
+      * popper                     :   1.53 MB (25 files)
+      * chart.js                   :   1.34 MB (6 files)
+      * jquery-mapael              :   1.23 MB (13 files)
+
+[2] GLOBAL ASSET INCLUSION IN MAIN LAYOUT (layouts/app.blade.php):
+    Global CSS Stylesheet Tags (<link>)  : 7 tags loaded on EVERY page
+    Global Javascript Tags (<script src>) : 6 tags loaded on EVERY page
+    Inline Script Blocks                 : 0 uncompiled jQuery blocks
+
+    Sample Scripts Loaded Unconditionally:
+      - https://code.jquery.com/jquery-3.3.1.min.js
+      - https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
+      - https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js
+      - https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js
+      - https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js
+
+[3] COMPARISON: LEGACY PLUGINS VS. TARGET VITE 5 BUNDLE:
+    * Legacy Monolith: 59 separate plugin folders, multiple HTTP round-trips, no tree-shaking.
+    * Target Vite 5  : 1 minified, tree-shaken app.js (~60-120 KB), native ES modules, instant HMR.
+======================================================================

@@ -1,0 +1,86 @@
+[
+	{
+		"name": "id",
+		"dbType": "increments",
+		"htmlType": null,
+		"validations": null,
+		"searchable": false,
+		"fillable": false,
+		"primary": true,
+		"inForm": false,
+		"inIndex": false,
+		"inView": false
+	},
+	{
+		"name": "user_id",
+		"dbType": "integer:unsigned:foreign,users,id",
+		"htmlType": "selectTable:users:name,id",
+		"validations": "required",
+		"searchable": true,
+		"fillable": true,
+		"primary": false,
+		"inForm": true,
+		"inIndex": true,
+		"inView": true
+	},
+	{
+		"name": "quotation_id",
+		"dbType": "integer:unsigned:foreign,quotations,id",
+		"htmlType": "selectTable:quotations:name,id",
+		"validations": "required",
+		"searchable": true,
+		"fillable": true,
+		"primary": false,
+		"inForm": true,
+		"inIndex": true,
+		"inView": true
+	},
+    {
+		"name": "note",
+		"dbType": "text:nullable",
+		"htmlType": "textarea",
+		"validations": "",
+		"searchable": false,
+		"fillable": true,
+		"primary": false,
+		"inForm": true,
+		"inIndex": true,
+		"inView": true
+    },
+    {
+		"name": "status",
+		"dbType": "integer:default,0",
+		"htmlType": "",
+		"validations": "",
+		"searchable": false,
+		"fillable": true,
+		"primary": false,
+		"inForm": false,
+		"inIndex": false,
+		"inView": false
+	},
+	{
+		"name": "created_at",
+		"dbType": "timestamp",
+		"htmlType": null,
+		"validations": null,
+		"searchable": false,
+		"fillable": false,
+		"primary": false,
+		"inForm": false,
+		"inIndex": false,
+		"inView": false
+	},
+	{
+		"name": "updated_at",
+		"dbType": "timestamp",
+		"htmlType": null,
+		"validations": null,
+		"searchable": false,
+		"fillable": false,
+		"primary": false,
+		"inForm": false,
+		"inIndex": false,
+		"inView": false
+	}
+]

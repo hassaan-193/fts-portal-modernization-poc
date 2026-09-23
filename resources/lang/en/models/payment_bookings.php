@@ -1,0 +1,45 @@
+<?php
+
+return array (
+  'title' => 'Payment Bookings',
+  'singular' => 'Payment Booking',
+  'plural' => 'Payment_Bookings',
+  'dashboard' => 'Payment Booking Dashboard',
+  'approvals' => 'Payment Booking Approvals',
+  'menu' =>
+  array (
+    'index' => 'Payment Bookings',
+    'book' => 'Book a Payment',
+    'approvals' => 'Approvals',
+    'dashboard' => 'Release Dashboard',
+  ),
+  'fields' =>
+  array (
+    'id' => 'Id',
+    'reference_no' => 'Reference',
+    'booking_type' => 'Type',
+    'payee' => 'Payee / Beneficiary',
+    'paid_to' => 'Paid To',
+    'payee_project' => 'Payee / Project',
+    'payment_against' => 'Payment Against',
+    'purpose' => 'Purpose / Description',
+    'amount' => 'Amount',
+    'project_cost_centre' => 'Project / Cost Centre',
+    'booking_date' => 'Booking Date',
+    'cheque_number' => 'Cheque Number',
+    'cheque_date' => 'Cheque Date',
+    'bank_account' => 'Bank Account',
+    'release_date' => 'Release Date',
+    'cash_account' => 'Cash Account',
+    'payment_date' => 'Payment Date',
+    'status' => 'Status',
+    'booked' => 'Booked',
+    'released' => 'Released',
+    'release_on' => 'Release On',
+    'requested_by' => 'Requested By',
+    'waiting_on' => 'Waiting On',
+    'note' => 'Note',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+  ),
+);

@@ -1,0 +1,122 @@
+[
+	{
+		"name": "id",
+		"dbType": "increments",
+		"htmlType": null,
+		"validations": null,
+		"searchable": false,
+		"fillable": false,
+		"primary": true,
+		"inForm": false,
+		"inIndex": false,
+		"inView": false
+	},
+    {
+        "name": "payrollable_id",
+        "dbType": "integer:nullable",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": true
+    },
+    {
+        "name": "payrollable_type",
+        "dbType": "string:nullable",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": true
+    },
+    {
+        "name": "hours",
+        "dbType": "double",
+        "htmlType": "text",
+        "validations": "required:numeric",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": false,
+        "inView": true
+    },
+    {
+        "name": "plus_adjustment",
+        "dbType": "double",
+        "htmlType": "text",
+        "validations": "required:numeric",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": false,
+        "inView": true
+    },
+    {
+        "name": "minus_adjustment",
+        "dbType": "double",
+        "htmlType": "text",
+        "validations": "required:numeric",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": false,
+        "inView": true
+    },
+    {
+        "name": "total_amount",
+        "dbType": "double",
+        "htmlType": "text",
+        "validations": "required:numeric",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": false,
+        "inView": true
+    },
+    {
+		"name": "note",
+		"dbType": "text:nullable",
+		"htmlType": "textarea",
+		"validations": "",
+		"searchable": false,
+		"fillable": true,
+		"primary": false,
+		"inForm": true,
+		"inIndex": true,
+		"inView": true
+    },
+	{
+		"name": "created_at",
+		"dbType": "timestamp",
+		"htmlType": null,
+		"validations": null,
+		"searchable": false,
+		"fillable": false,
+		"primary": false,
+		"inForm": false,
+		"inIndex": false,
+		"inView": false
+	},
+	{
+		"name": "updated_at",
+		"dbType": "timestamp",
+		"htmlType": null,
+		"validations": null,
+		"searchable": false,
+		"fillable": false,
+		"primary": false,
+		"inForm": false,
+		"inIndex": false,
+		"inView": false
+	}
+]

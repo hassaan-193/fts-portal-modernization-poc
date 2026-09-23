@@ -1,0 +1,35 @@
+@section('css')
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css')}}">
+@endsection
+
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('$FIELD_NAME$', __('models/$TABLE_NAME$.fields.$FIELD_NAME$').':') !!}
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+            <i class="far fa-calendar-alt"></i>
+            </span>
+        </div>
+        {!! Form::text('$FIELD_NAME$', null, ['class' => ($errors->has('$FIELD_NAME$')) ? 'form-control is-invalid' : 'form-control' ,'id'=>'$FIELD_NAME$']) !!}
+        @if ($errors->has('$FIELD_NAME$'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('$FIELD_NAME$') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+
+@section('scripts')
+@parent
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
+    <script type="text/javascript">
+        $('#$FIELD_NAME$').daterangepicker({
+            singleDatePicker: true,
+            timePicker: false,
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        })
+    </script>
+@endsection

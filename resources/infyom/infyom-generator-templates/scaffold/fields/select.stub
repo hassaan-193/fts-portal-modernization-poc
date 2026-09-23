@@ -1,0 +1,26 @@
+@section('css')
+@parent
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+@endsection
+
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('$FIELD_NAME$', __('models/$TABLE_NAME$.fields.$FIELD_NAME$').':') !!}
+    {!! Form::select('$FIELD_NAME$', $INPUT_ARR$, null, ['class' => ($errors->has('$FIELD_NAME$')) ? 'form-control is-invalid' : 'form-control' ,'id'=>'$FIELD_NAME$']) !!}
+    @if ($errors->has('$FIELD_NAME$'))
+        <span class="invalid-feedback">
+            <strong>{{ $errors->first('$FIELD_NAME$') }}</strong>
+        </span>
+    @endif
+</div>
+
+@section('scripts')
+@parent
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js')}}"></script>
+    <script>
+        $('#$FIELD_NAME$').select2({
+        theme: 'bootstrap4'
+        })
+    </script>
+@endsection

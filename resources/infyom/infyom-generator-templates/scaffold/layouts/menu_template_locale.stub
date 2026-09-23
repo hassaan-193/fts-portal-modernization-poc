@@ -1,0 +1,5 @@
+@can('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$')
+    <li class="nav-item">
+        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="nav-link {{ Request::is('$ROUTE_PREFIX$$MODEL_NAME_PLURAL_CAMEL$*') ? 'active' : '' }}">@lang('models/$MODEL_NAME_PLURAL_CAMEL$.plural')</a>
+    </li>
+@endcan

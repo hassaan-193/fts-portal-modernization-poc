@@ -1,0 +1,4 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<li class="list-group-item">
+    <b>@lang('models/$MODEL_NAME_PLURAL_CAMEL$.fields.$FIELD_NAME$')</b> <a class="float-right">{{ $$MODEL_NAME_CAMEL$->$FIELD_NAME$ }}</a>
+</li>

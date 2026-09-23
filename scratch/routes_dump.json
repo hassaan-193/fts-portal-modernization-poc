@@ -1,0 +1,6357 @@
+[
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "routes",
+        "name": "pretty-routes.show",
+        "action": "PrettyRoutes\\PrettyRoutesController@show",
+        "middleware": []
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "livewire\/livewire.js",
+        "name": null,
+        "action": "Livewire\\Controllers\\LivewireJavaScriptAssets@source",
+        "middleware": []
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "livewire\/livewire.js.map",
+        "name": null,
+        "action": "Livewire\\Controllers\\LivewireJavaScriptAssets@maps",
+        "middleware": []
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "livewire\/message\/{name}",
+        "name": null,
+        "action": "Livewire\\Controllers\\HttpConnectionHandler",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "livewire\/upload-file",
+        "name": "livewire.upload-file",
+        "action": "Livewire\\Controllers\\FileUploadHandler@handle",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "livewire\/preview-file\/{filename}",
+        "name": "livewire.preview-file",
+        "action": "Livewire\\Controllers\\FilePreviewHandler@handle",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/login",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\UserController@login",
+        "middleware": [
+            "api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/user\/update_firebase_token",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\UserController@update_firebase_token",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/get_request_forms",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\RequestController@get_request_forms",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/get_updated_request_forms",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\RequestController@get_updated_request_forms",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/update_request_status",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\RequestController@update_request_status",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/receipts",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\ReceiptController@index",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/payments",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentController@index",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/cheques",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\ChequesController@index",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/foreman\/login",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Auth\\ForemanAuthController@login",
+        "middleware": [
+            "api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/foreman\/logout",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Auth\\ForemanAuthController@logout",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/foreman\/refresh-token",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Auth\\ForemanAuthController@refreshToken",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/attendance\/today",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ForemanAttendanceController@getTodayLabors",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/attendance\/submit",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ForemanAttendanceController@submitAttendance",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/attendance\/check-submitted",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ForemanAttendanceController@checkSubmitted",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/attendance\/history",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ForemanAttendanceController@getHistory",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/attendance\/export",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ForemanAttendanceController@exportAttendance",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/attendance\/pending",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ManagerAttendanceController@getPending",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/attendance\/{attendance}\/approve",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ManagerAttendanceController@approve",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/attendance\/{attendance}\/reject",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ManagerAttendanceController@reject",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/attendance\/approved",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\ManagerAttendanceController@getApproved",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/sites",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Site\\SiteController@index",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/sites",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Site\\SiteController@store",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/sites\/{site}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Site\\SiteController@show",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "PUT"
+        ],
+        "uri": "api\/v1\/sites\/{site}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Site\\SiteController@update",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "api\/v1\/sites\/{site}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Site\\SiteController@destroy",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/pwa-qr-attendance\/scan",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\PwaQrAttendanceController@scan",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/pwa-qr-attendance\/lookup-staff\/{staffId}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\PwaQrAttendanceController@lookupStaff",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/pwa-qr-attendance\/today",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\PwaQrAttendanceController@todayRecords",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/pwa-qr-attendance\/sites",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\PwaQrAttendanceController@getSites",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/qr-attendance\/scan",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@scanQR",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/qr-attendance\/today",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@getTodayAttendance",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/qr-attendance\/summary",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@getAttendanceSummary",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/qr-attendance\/open-session",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@getOpenSession",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/qr-attendance\/evaluate-day",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@evaluateDay",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/qr-attendance\/shift-rules",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@getShiftRules",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/present-attendance\/today",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\PresentAttendanceController@getTodayLabors",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/present-attendance\/submit",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\PresentAttendanceController@submitAttendance",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/present-attendance\/history",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\PresentAttendanceController@getHistory",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/payment-bookings\/meta",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@meta",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/payment-bookings\/device-token",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@registerDeviceToken",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "api\/v1\/payment-bookings\/device-token",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@deleteDeviceToken",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/payment-bookings\/summary",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@summary",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/payment-bookings\/approvals",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@queue",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/payment-bookings",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@index",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/payment-bookings",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@store",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@show",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "PUT"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@update",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "PATCH"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@update",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@destroy",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}\/submit",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@submit",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}\/approve",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@approve",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}\/reject",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@reject",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}\/hold",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@hold",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "api\/v1\/payment-bookings\/{id}\/resume",
+        "name": "api.",
+        "action": "App\\Http\\Controllers\\API\\PaymentBooking\\PaymentBookingController@resume",
+        "middleware": [
+            "api",
+            "auth:api"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "orders",
+        "name": "orders.index",
+        "action": "App\\Http\\Controllers\\OrderController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "orders\/create",
+        "name": "orders.create",
+        "action": "App\\Http\\Controllers\\OrderController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "orders",
+        "name": "orders.store",
+        "action": "App\\Http\\Controllers\\OrderController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "orders\/{order}",
+        "name": "orders.show",
+        "action": "App\\Http\\Controllers\\OrderController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "orders\/{order}\/edit",
+        "name": "orders.edit",
+        "action": "App\\Http\\Controllers\\OrderController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "orders\/{order}",
+        "name": "orders.update",
+        "action": "App\\Http\\Controllers\\OrderController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "orders\/{order}",
+        "name": "orders.destroy",
+        "action": "App\\Http\\Controllers\\OrderController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/visit-form",
+        "name": "projects.showForm",
+        "action": "App\\Http\\Controllers\\ProjectReportController@showForm",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects\/submit-report",
+        "name": "projects.submitReport",
+        "action": "App\\Http\\Controllers\\ProjectReportController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/amc-drafts",
+        "name": "projects.drafts",
+        "action": "App\\Http\\Controllers\\ProjectReportController@drafts",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects\/delete-draft\/{id}",
+        "name": "projects.deleteDraft",
+        "action": "App\\Http\\Controllers\\ProjectReportController@destroyDraft",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/get-reference-number",
+        "name": "projects.getReferenceNumber",
+        "action": "App\\Http\\Controllers\\ProjectReportController@generateReferenceNumber",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/get-clients",
+        "name": "projects.getClients",
+        "action": "App\\Http\\Controllers\\ProjectReportController@getClients",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/get-projects",
+        "name": "projects.getProjects",
+        "action": "App\\Http\\Controllers\\ProjectReportController@getProjects",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/get-visit-schedules",
+        "name": "projects.getVisitSchedules",
+        "action": "App\\Http\\Controllers\\ProjectReportController@getVisitSchedules",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/get-projects-by-company",
+        "name": "projects.getProjectsByCompany",
+        "action": "App\\Http\\Controllers\\ProjectReportController@getProjectsByCompany",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/report-status",
+        "name": "projects.reportStatus",
+        "action": "App\\Http\\Controllers\\ProjectReportController@showReportStatusPage",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects\/update-report-status\/{id}",
+        "name": "projects.updateReportStatus",
+        "action": "App\\Http\\Controllers\\ProjectReportController@updateReportStatus",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/view-report\/{id}",
+        "name": "projects.viewReport",
+        "action": "App\\Http\\Controllers\\ProjectReportController@viewReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/edit-report\/{id}",
+        "name": "projects.editReport",
+        "action": "App\\Http\\Controllers\\ProjectReportController@editReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects\/update-report\/{id}",
+        "name": "projects.updateReport",
+        "action": "App\\Http\\Controllers\\ProjectReportController@updateReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/visit-tracking",
+        "name": "projects.visit-tracking",
+        "action": "App\\Http\\Controllers\\ProjectController@visitTracking",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "visit-schedules\/{id}\/upload-file",
+        "name": "visit-schedules.upload-file",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@uploadFile",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PATCH"
+        ],
+        "uri": "visit-schedules\/{id}\/update-status",
+        "name": "visit-schedules.update-status",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@updateStatus",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "visit-schedules\/{id}\/comments",
+        "name": "visit-schedules.comments",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@showComments",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "visit-schedules\/{id}\/comments",
+        "name": "visit-schedules.store-comment",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@storeComment",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "visit-schedules\/{visitScheduleId}\/comments\/{commentId}",
+        "name": "visit-schedules.delete-comment",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@deleteComment",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "visit-schedules\/{visitScheduleId}\/comments\/{commentId}\/edit",
+        "name": "visit-schedules.edit-comment",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@editComment",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT"
+        ],
+        "uri": "visit-schedules\/{visitScheduleId}\/comments\/{commentId}",
+        "name": "visit-schedules.update-comment",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@updateComment",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "visit-schedules\/history",
+        "name": "visit-schedules.history",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@showHistory",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "visit-schedules\/visit-schedules\/history-data",
+        "name": "visit-schedules.visit-schedules.history.data",
+        "action": "App\\Http\\Controllers\\VisitScheduleController@getHistoryData",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "login",
+        "name": "login",
+        "action": "App\\Http\\Controllers\\Auth\\LoginController@showLoginForm",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "login",
+        "name": null,
+        "action": "App\\Http\\Controllers\\Auth\\LoginController@login",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "logout",
+        "name": "logout",
+        "action": "App\\Http\\Controllers\\Auth\\LoginController@logout",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "password\/reset",
+        "name": "password.request",
+        "action": "App\\Http\\Controllers\\Auth\\ForgotPasswordController@showLinkRequestForm",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "password\/email",
+        "name": "password.email",
+        "action": "App\\Http\\Controllers\\Auth\\ForgotPasswordController@sendResetLinkEmail",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "password\/reset\/{token}",
+        "name": "password.reset",
+        "action": "App\\Http\\Controllers\\Auth\\ResetPasswordController@showResetForm",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "password\/reset",
+        "name": "password.update",
+        "action": "App\\Http\\Controllers\\Auth\\ResetPasswordController@reset",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "email\/verify",
+        "name": "verification.notice",
+        "action": "App\\Http\\Controllers\\Auth\\VerificationController@show",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "email\/verify\/{id}\/{hash}",
+        "name": "verification.verify",
+        "action": "App\\Http\\Controllers\\Auth\\VerificationController@verify",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "email\/resend",
+        "name": "verification.resend",
+        "action": "App\\Http\\Controllers\\Auth\\VerificationController@resend",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "company\/login",
+        "name": "company.login",
+        "action": "App\\Http\\Controllers\\Auth\\CompanyLoginController@showLoginForm",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "company\/login",
+        "name": "company.login.submit",
+        "action": "App\\Http\\Controllers\\Auth\\CompanyLoginController@login",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "company\/logout",
+        "name": "company.logout",
+        "action": "App\\Http\\Controllers\\Auth\\CompanyLoginController@logout",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "company\/password\/reset",
+        "name": "company.password.request",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "company\/password\/email",
+        "name": "company.password.email",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "company\/password\/reset\/{token}",
+        "name": "company.password.reset",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "company\/password\/reset",
+        "name": "company.password.update",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "company\/dashboard",
+        "name": "company.dashboard",
+        "action": "App\\Http\\Controllers\\CompanyHomeController@index",
+        "middleware": [
+            "web",
+            "auth:company"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "company\/{id}\/profile",
+        "name": "company.user_profile",
+        "action": "App\\Http\\Controllers\\CompanyHomeController@user_profile",
+        "middleware": [
+            "web",
+            "auth:company"
+        ]
+    },
+    {
+        "methods": [
+            "PUT"
+        ],
+        "uri": "company\/{id}\/profile",
+        "name": "company.update_user_profile",
+        "action": "App\\Http\\Controllers\\CompanyHomeController@update_user_profile",
+        "middleware": [
+            "web",
+            "auth:company"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "\/",
+        "name": "home",
+        "action": "App\\Http\\Controllers\\HomeController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "notifications\/NotifMarkAsRead",
+        "name": "notifications.MarkAsRead",
+        "action": "App\\Http\\Controllers\\NotificationController@MarkAsRead",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "roles",
+        "name": "roles.index",
+        "action": "App\\Http\\Controllers\\RoleController@index",
+        "middleware": [
+            "web",
+            "auth",
+            "can:roles"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "roles\/create",
+        "name": "roles.create",
+        "action": "App\\Http\\Controllers\\RoleController@create",
+        "middleware": [
+            "web",
+            "auth",
+            "can:roles"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "roles",
+        "name": "roles.store",
+        "action": "App\\Http\\Controllers\\RoleController@store",
+        "middleware": [
+            "web",
+            "auth",
+            "can:roles"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "roles\/{role}",
+        "name": "roles.show",
+        "action": "App\\Http\\Controllers\\RoleController@show",
+        "middleware": [
+            "web",
+            "auth",
+            "can:roles"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "roles\/{role}\/edit",
+        "name": "roles.edit",
+        "action": "App\\Http\\Controllers\\RoleController@edit",
+        "middleware": [
+            "web",
+            "auth",
+            "can:roles"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "roles\/{role}",
+        "name": "roles.update",
+        "action": "App\\Http\\Controllers\\RoleController@update",
+        "middleware": [
+            "web",
+            "auth",
+            "can:roles"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "roles\/{role}",
+        "name": "roles.destroy",
+        "action": "App\\Http\\Controllers\\RoleController@destroy",
+        "middleware": [
+            "web",
+            "auth",
+            "can:roles"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "users",
+        "name": "users.index",
+        "action": "App\\Http\\Controllers\\UserController@index",
+        "middleware": [
+            "web",
+            "auth",
+            "can:users"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "users\/create",
+        "name": "users.create",
+        "action": "App\\Http\\Controllers\\UserController@create",
+        "middleware": [
+            "web",
+            "auth",
+            "can:users"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "users",
+        "name": "users.store",
+        "action": "App\\Http\\Controllers\\UserController@store",
+        "middleware": [
+            "web",
+            "auth",
+            "can:users"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "users\/{user}",
+        "name": "users.show",
+        "action": "App\\Http\\Controllers\\UserController@show",
+        "middleware": [
+            "web",
+            "auth",
+            "can:users"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "users\/{user}\/edit",
+        "name": "users.edit",
+        "action": "App\\Http\\Controllers\\UserController@edit",
+        "middleware": [
+            "web",
+            "auth",
+            "can:users"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "users\/{user}",
+        "name": "users.update",
+        "action": "App\\Http\\Controllers\\UserController@update",
+        "middleware": [
+            "web",
+            "auth",
+            "can:users"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "users\/{user}",
+        "name": "users.destroy",
+        "action": "App\\Http\\Controllers\\UserController@destroy",
+        "middleware": [
+            "web",
+            "auth",
+            "can:users"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "users\/{id}\/profile",
+        "name": "users.user_profile",
+        "action": "App\\Http\\Controllers\\UserController@user_profile",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT"
+        ],
+        "uri": "users\/{id}\/profile",
+        "name": "users.update_user_profile",
+        "action": "App\\Http\\Controllers\\UserController@update_user_profile",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "quotations",
+        "name": "quotations.index",
+        "action": "App\\Http\\Controllers\\QuotationController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "quotations\/create",
+        "name": "quotations.create",
+        "action": "App\\Http\\Controllers\\QuotationController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "quotations",
+        "name": "quotations.store",
+        "action": "App\\Http\\Controllers\\QuotationController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "quotations\/{quotation}",
+        "name": "quotations.show",
+        "action": "App\\Http\\Controllers\\QuotationController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "quotations\/{quotation}\/edit",
+        "name": "quotations.edit",
+        "action": "App\\Http\\Controllers\\QuotationController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "quotations\/{quotation}",
+        "name": "quotations.update",
+        "action": "App\\Http\\Controllers\\QuotationController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "quotations\/{quotation}",
+        "name": "quotations.destroy",
+        "action": "App\\Http\\Controllers\\QuotationController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "quotations\/status\/{id}\/update",
+        "name": "quotations.update_status",
+        "action": "App\\Http\\Controllers\\QuotationController@update_status",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "quotations\/add\/type\/ajax",
+        "name": "quotations.add_type_ajax",
+        "action": "App\\Http\\Controllers\\QuotationController@add_type_ajax",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "get-amc-projects",
+        "name": "get-amc-projects",
+        "action": "App\\Http\\Controllers\\QuotationController@getAmcProjects",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoins",
+        "name": "lpoins.index",
+        "action": "App\\Http\\Controllers\\LpoinController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoins\/create",
+        "name": "lpoins.create",
+        "action": "App\\Http\\Controllers\\LpoinController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "lpoins",
+        "name": "lpoins.store",
+        "action": "App\\Http\\Controllers\\LpoinController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoins\/{lpoin}",
+        "name": "lpoins.show",
+        "action": "App\\Http\\Controllers\\LpoinController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoins\/{lpoin}\/edit",
+        "name": "lpoins.edit",
+        "action": "App\\Http\\Controllers\\LpoinController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "lpoins\/{lpoin}",
+        "name": "lpoins.update",
+        "action": "App\\Http\\Controllers\\LpoinController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "lpoins\/{lpoin}",
+        "name": "lpoins.destroy",
+        "action": "App\\Http\\Controllers\\LpoinController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "drawing-receiveds",
+        "name": "drawing-receiveds.index",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "drawing-receiveds\/create",
+        "name": "drawing-receiveds.create",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "drawing-receiveds",
+        "name": "drawing-receiveds.store",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "drawing-receiveds\/{drawing_received}",
+        "name": "drawing-receiveds.show",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "drawing-receiveds\/{drawing_received}\/edit",
+        "name": "drawing-receiveds.edit",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "drawing-receiveds\/{drawing_received}",
+        "name": "drawing-receiveds.update",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "drawing-receiveds\/{drawing_received}",
+        "name": "drawing-receiveds.destroy",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "drawing-receiveds\/engineer\/dashboard",
+        "name": "drawing-receiveds.engineer-dashboard",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@engineerDashboard",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "drawing-receiveds\/{id}\/contribute",
+        "name": "drawing-receiveds.contribute-form",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@contributeForm",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "drawing-receiveds\/{id}\/store-contribution",
+        "name": "drawing-receiveds.store-contribution",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@storeContribution",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "drawing-receiveds\/{id}\/contributions",
+        "name": "drawing-receiveds.contributions",
+        "action": "App\\Http\\Controllers\\DrawingReceivedController@contributionHistory",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendors",
+        "name": "vendors.index",
+        "action": "App\\Http\\Controllers\\VendorController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendors\/create",
+        "name": "vendors.create",
+        "action": "App\\Http\\Controllers\\VendorController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "vendors",
+        "name": "vendors.store",
+        "action": "App\\Http\\Controllers\\VendorController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendors\/{vendor}",
+        "name": "vendors.show",
+        "action": "App\\Http\\Controllers\\VendorController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendors\/{vendor}\/edit",
+        "name": "vendors.edit",
+        "action": "App\\Http\\Controllers\\VendorController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "vendors\/{vendor}",
+        "name": "vendors.update",
+        "action": "App\\Http\\Controllers\\VendorController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "vendors\/{vendor}",
+        "name": "vendors.destroy",
+        "action": "App\\Http\\Controllers\\VendorController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "vendors\/add\/ajax",
+        "name": "vendors.add_vendor_ajax",
+        "action": "App\\Http\\Controllers\\VendorController@add_vendor_ajax",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendors\/{vendorId}\/terms-and-conditions",
+        "name": "vendors.terms-and-conditions",
+        "action": "App\\Http\\Controllers\\VendorController@getTermsAndConditions",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts\/{lpoout}\/print",
+        "name": "lpoouts.print",
+        "action": "App\\Http\\Controllers\\LpooutController@print",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts\/{lpoout}\/download-pdf",
+        "name": "lpoouts.downloadPdf",
+        "action": "App\\Http\\Controllers\\LpooutController@downloadPdf",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendor\/{id}\/vat",
+        "name": null,
+        "action": "App\\Http\\Controllers\\LpooutController@getVat",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendor\/{id}\/payment-preference",
+        "name": null,
+        "action": "App\\Http\\Controllers\\LpooutController@getVendorPaymentPreference",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts",
+        "name": "lpoouts.index",
+        "action": "App\\Http\\Controllers\\LpooutController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts\/create",
+        "name": "lpoouts.create",
+        "action": "App\\Http\\Controllers\\LpooutController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "lpoouts",
+        "name": "lpoouts.store",
+        "action": "App\\Http\\Controllers\\LpooutController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts\/{lpoout}",
+        "name": "lpoouts.show",
+        "action": "App\\Http\\Controllers\\LpooutController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts\/{lpoout}\/edit",
+        "name": "lpoouts.edit",
+        "action": "App\\Http\\Controllers\\LpooutController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "lpoouts\/{lpoout}",
+        "name": "lpoouts.update",
+        "action": "App\\Http\\Controllers\\LpooutController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "lpoouts\/{lpoout}",
+        "name": "lpoouts.destroy",
+        "action": "App\\Http\\Controllers\\LpooutController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts\/status\/manage",
+        "name": "lpoouts.manageStatus",
+        "action": "App\\Http\\Controllers\\LpooutController@manageStatus",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "lpoouts\/{id}\/approve",
+        "name": "lpoouts.approve",
+        "action": "App\\Http\\Controllers\\LpooutController@approve",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "lpoouts\/{id}\/disapprove",
+        "name": "lpoouts.disapprove",
+        "action": "App\\Http\\Controllers\\LpooutController@disapprove",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "lpoouts\/{id}\/revise",
+        "name": "lpoouts.showRevise",
+        "action": "App\\Http\\Controllers\\LpooutController@showRevise",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendor-payables",
+        "name": "vendor-payables.index",
+        "action": "App\\Http\\Controllers\\VendorPayableController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendor-payables\/create",
+        "name": "vendor-payables.create",
+        "action": "App\\Http\\Controllers\\VendorPayableController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "vendor-payables",
+        "name": "vendor-payables.store",
+        "action": "App\\Http\\Controllers\\VendorPayableController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendor-payables\/{vendor_payable}",
+        "name": "vendor-payables.show",
+        "action": "App\\Http\\Controllers\\VendorPayableController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "vendor-payables\/{vendor_payable}\/edit",
+        "name": "vendor-payables.edit",
+        "action": "App\\Http\\Controllers\\VendorPayableController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "vendor-payables\/{vendor_payable}",
+        "name": "vendor-payables.update",
+        "action": "App\\Http\\Controllers\\VendorPayableController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "vendor-payables\/{vendor_payable}",
+        "name": "vendor-payables.destroy",
+        "action": "App\\Http\\Controllers\\VendorPayableController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PATCH"
+        ],
+        "uri": "vendor-payables\/{id}\/cancel",
+        "name": "vendor-payables.cancel",
+        "action": "App\\Http\\Controllers\\VendorPayableController@cancel",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-analytics",
+        "name": "payment-analytics.index",
+        "action": "App\\Http\\Controllers\\PaymentAnalyticsController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders",
+        "name": "purchase-orders.index",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders\/create",
+        "name": "purchase-orders.create",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders",
+        "name": "purchase-orders.store",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders\/{purchase_order}",
+        "name": "purchase-orders.show",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders\/{purchase_order}\/edit",
+        "name": "purchase-orders.edit",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "purchase-orders\/{purchase_order}",
+        "name": "purchase-orders.update",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "purchase-orders\/{purchase_order}",
+        "name": "purchase-orders.destroy",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders-department\/index",
+        "name": "purchase-orders.departmentIndex",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@departmentIndex",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders-department\/{id}\/edit",
+        "name": "purchase-orders.departmentEdit",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@departmentEdit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders-department\/{id}\/update",
+        "name": "purchase-orders.departmentUpdate",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@departmentUpdate",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders-department\/{id}\/reject",
+        "name": "purchase-orders.departmentReject",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@departmentReject",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders-department\/{id}\/send-back",
+        "name": "purchase-orders.departmentSendBack",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@departmentSendBack",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders-admin\/index",
+        "name": "purchase-orders.adminIndex",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@adminIndex",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "purchase-orders-admin\/{id}\/show",
+        "name": "purchase-orders.adminShow",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@adminShow",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders-admin\/{id}\/approve",
+        "name": "purchase-orders.adminApprove",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@adminApprove",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders-admin\/{id}\/approve-with-email",
+        "name": "purchase-orders.adminApproveWithEmail",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@adminApproveWithEmail",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders-admin\/{id}\/reject",
+        "name": "purchase-orders.adminReject",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@adminReject",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "purchase-orders-admin\/{id}\/hold",
+        "name": "purchase-orders.adminHold",
+        "action": "App\\Http\\Controllers\\PurchaseOrderController@adminHold",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "media\/{id}\/delete",
+        "name": "media.delete_file",
+        "action": "App\\Http\\Controllers\\MediaController@delete_file",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/visit-tracking-export-excel",
+        "name": "projects.visit-tracking-export-excel",
+        "action": "App\\Http\\Controllers\\ProjectController@visitTrackingExportExcel",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/visit-tracking-export",
+        "name": "projects.visit-tracking-export",
+        "action": "App\\Http\\Controllers\\ProjectController@visitTrackingExport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects",
+        "name": "projects.index",
+        "action": "App\\Http\\Controllers\\ProjectController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/create",
+        "name": "projects.create",
+        "action": "App\\Http\\Controllers\\ProjectController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects",
+        "name": "projects.store",
+        "action": "App\\Http\\Controllers\\ProjectController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/{project}",
+        "name": "projects.show",
+        "action": "App\\Http\\Controllers\\ProjectController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/{project}\/edit",
+        "name": "projects.edit",
+        "action": "App\\Http\\Controllers\\ProjectController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "projects\/{project}",
+        "name": "projects.update",
+        "action": "App\\Http\\Controllers\\ProjectController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "projects\/{project}",
+        "name": "projects.destroy",
+        "action": "App\\Http\\Controllers\\ProjectController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/{id}\/extensions",
+        "name": "projects.get_extensions",
+        "action": "App\\Http\\Controllers\\ProjectController@get_extensions",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects\/comment",
+        "name": "projects.store_comment",
+        "action": "App\\Http\\Controllers\\ProjectController@store_comment",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/view\/{id}\/extensions",
+        "name": "projects.view_extensions",
+        "action": "App\\Http\\Controllers\\ProjectController@view_extensions",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects\/{id}\/extensions",
+        "name": "projects.store_extensions",
+        "action": "App\\Http\\Controllers\\ProjectController@store_extensions",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "projects\/{id}\/extensions",
+        "name": "projects.delete_extensions",
+        "action": "App\\Http\\Controllers\\ProjectController@delete_extensions",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "projects\/{id}\/lpoout",
+        "name": "projects.get_lpoout",
+        "action": "App\\Http\\Controllers\\ProjectController@get_lpoout",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "projects\/{id}\/lpoout",
+        "name": "projects.store_lpoout",
+        "action": "App\\Http\\Controllers\\ProjectController@store_lpoout",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "projects\/{id}\/lpoout",
+        "name": "projects.delete_lpoout",
+        "action": "App\\Http\\Controllers\\ProjectController@delete_lpoout",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "companies",
+        "name": "companies.index",
+        "action": "App\\Http\\Controllers\\CompanyController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "companies\/create",
+        "name": "companies.create",
+        "action": "App\\Http\\Controllers\\CompanyController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "companies",
+        "name": "companies.store",
+        "action": "App\\Http\\Controllers\\CompanyController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "companies\/{company}",
+        "name": "companies.show",
+        "action": "App\\Http\\Controllers\\CompanyController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "companies\/{company}\/edit",
+        "name": "companies.edit",
+        "action": "App\\Http\\Controllers\\CompanyController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "companies\/{company}",
+        "name": "companies.update",
+        "action": "App\\Http\\Controllers\\CompanyController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "companies\/{company}",
+        "name": "companies.destroy",
+        "action": "App\\Http\\Controllers\\CompanyController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "companies\/add\/ajax",
+        "name": "companies.add_company_ajax",
+        "action": "App\\Http\\Controllers\\CompanyController@add_company_ajax",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "companies\/client\/{id}\/report",
+        "name": "companies.get_company_report",
+        "action": "App\\Http\\Controllers\\CompanyController@get_company_report",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "companies\/client\/{id}\/report\/export\/{type}",
+        "name": "companies.export_company_report",
+        "action": "App\\Http\\Controllers\\CompanyController@export_company_report",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoices",
+        "name": "invoices.index",
+        "action": "App\\Http\\Controllers\\InvoiceController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "invoices",
+        "name": "invoices.store",
+        "action": "App\\Http\\Controllers\\InvoiceController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoices\/{invoice}",
+        "name": "invoices.show",
+        "action": "App\\Http\\Controllers\\InvoiceController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoices\/{invoice}\/edit",
+        "name": "invoices.edit",
+        "action": "App\\Http\\Controllers\\InvoiceController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "invoices\/{invoice}",
+        "name": "invoices.update",
+        "action": "App\\Http\\Controllers\\InvoiceController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "invoices\/{invoice}",
+        "name": "invoices.destroy",
+        "action": "App\\Http\\Controllers\\InvoiceController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoices\/{request}\/create",
+        "name": "invoices.create",
+        "action": "App\\Http\\Controllers\\InvoiceController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoices\/request\/invoices",
+        "name": "invoices.request_invoices",
+        "action": "App\\Http\\Controllers\\InvoiceController@request_invoices",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoices\/{request_id}\/approve-email-form",
+        "name": "invoices.approve-email-form",
+        "action": "App\\Http\\Controllers\\InvoiceController@showApproveEmailForm",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "invoices\/approve-and-email",
+        "name": "invoices.approve-and-email",
+        "action": "App\\Http\\Controllers\\InvoiceController@approveAndEmail",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "invoices\/{id}\/send-email",
+        "name": "invoices.send-email",
+        "action": "App\\Http\\Controllers\\InvoiceController@sendInvoiceEmail",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoice-requests\/quotation-details\/{quotationId}",
+        "name": "invoiceRequests.quotationDetails",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@getQuotationDetails",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/lpoout\/{lpoout_id}\/create",
+        "name": "invoiceRequests.create_with_lpoout",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@create_with_lpoout",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "invoiceRequests\/lpoout\/store",
+        "name": "invoiceRequests.store_lpoout",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@store_for_lpoout",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/{lpoin_id}\/create",
+        "name": "invoiceRequests.create_with_lpoin",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@create_with_lpoin",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/get\/{quotation}\/invoices",
+        "name": "invoiceRequests.get_quotation_invoices",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@get_quotation_invoices",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/get\/{quotation}\/invoice-requests",
+        "name": "invoiceRequests.get_quotation_invoice_requests",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@get_quotation_invoice_requests",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/get\/{quotation}\/invoice-payments",
+        "name": "invoiceRequests.get_quotation_invoice_payments",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@get_quotation_invoice_payments",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests",
+        "name": "invoiceRequests.index",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/create",
+        "name": "invoiceRequests.create",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "invoiceRequests",
+        "name": "invoiceRequests.store",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/{invoiceRequest}",
+        "name": "invoiceRequests.show",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "invoiceRequests\/{invoiceRequest}\/edit",
+        "name": "invoiceRequests.edit",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "invoiceRequests\/{invoiceRequest}",
+        "name": "invoiceRequests.update",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "invoiceRequests\/{invoiceRequest}",
+        "name": "invoiceRequests.destroy",
+        "action": "App\\Http\\Controllers\\InvoiceRequestController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "amc-invoices",
+        "name": "amc.invoices.index",
+        "action": "App\\Http\\Controllers\\AmcInvoiceController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "laborRequests",
+        "name": "laborRequests.index",
+        "action": "App\\Http\\Controllers\\LaborRequestController@index",
+        "middleware": [
+            "web",
+            "auth",
+            "can:laborRequests"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "laborRequests\/create",
+        "name": "laborRequests.create",
+        "action": "App\\Http\\Controllers\\LaborRequestController@create",
+        "middleware": [
+            "web",
+            "auth",
+            "can:laborRequests"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "laborRequests",
+        "name": "laborRequests.store",
+        "action": "App\\Http\\Controllers\\LaborRequestController@store",
+        "middleware": [
+            "web",
+            "auth",
+            "can:laborRequests"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "laborRequests\/{laborRequest}",
+        "name": "laborRequests.show",
+        "action": "App\\Http\\Controllers\\LaborRequestController@show",
+        "middleware": [
+            "web",
+            "auth",
+            "can:laborRequests"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "laborRequests\/{laborRequest}\/edit",
+        "name": "laborRequests.edit",
+        "action": "App\\Http\\Controllers\\LaborRequestController@edit",
+        "middleware": [
+            "web",
+            "auth",
+            "can:laborRequests"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "laborRequests\/{laborRequest}",
+        "name": "laborRequests.update",
+        "action": "App\\Http\\Controllers\\LaborRequestController@update",
+        "middleware": [
+            "web",
+            "auth",
+            "can:laborRequests"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "laborRequests\/{laborRequest}",
+        "name": "laborRequests.destroy",
+        "action": "App\\Http\\Controllers\\LaborRequestController@destroy",
+        "middleware": [
+            "web",
+            "auth",
+            "can:laborRequests"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "laborRequests\/{request_id}\/update_status",
+        "name": "laborRequests.update_status",
+        "action": "App\\Http\\Controllers\\LaborRequestController@update_status",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "paymentInvoices",
+        "name": "paymentInvoices.index",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "paymentInvoices\/create",
+        "name": "paymentInvoices.create",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "paymentInvoices",
+        "name": "paymentInvoices.store",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "paymentInvoices\/{paymentInvoice}",
+        "name": "paymentInvoices.show",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "paymentInvoices\/{paymentInvoice}\/edit",
+        "name": "paymentInvoices.edit",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "paymentInvoices\/{paymentInvoice}",
+        "name": "paymentInvoices.update",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "paymentInvoices\/{paymentInvoice}",
+        "name": "paymentInvoices.destroy",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "paymentInvoices\/create\/invoice\/{request}",
+        "name": "paymentInvoices.create_invoice",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@create_request_invoice",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "paymentInvoices\/create\/lpoout\/{lpoout}",
+        "name": "paymentInvoices.createFromLpoout",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@createFromLpoout",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "paymentInvoices\/lpoout\/store",
+        "name": "paymentInvoices.storeFromLpoout",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@storeFromLpoout",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "paymentInvoices\/request\/invoices",
+        "name": "paymentInvoices.request_invoices",
+        "action": "App\\Http\\Controllers\\PaymentInvoiceController@request_invoices",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "accounts",
+        "name": "accounts.index",
+        "action": "App\\Http\\Controllers\\AccountController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "accounts\/create",
+        "name": "accounts.create",
+        "action": "App\\Http\\Controllers\\AccountController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "accounts",
+        "name": "accounts.store",
+        "action": "App\\Http\\Controllers\\AccountController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "accounts\/{account}",
+        "name": "accounts.show",
+        "action": "App\\Http\\Controllers\\AccountController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "accounts\/{account}\/edit",
+        "name": "accounts.edit",
+        "action": "App\\Http\\Controllers\\AccountController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "accounts\/{account}",
+        "name": "accounts.update",
+        "action": "App\\Http\\Controllers\\AccountController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "accounts\/{account}",
+        "name": "accounts.destroy",
+        "action": "App\\Http\\Controllers\\AccountController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "receipts",
+        "name": "receipts.index",
+        "action": "App\\Http\\Controllers\\ReceiptController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "receipts\/create",
+        "name": "receipts.create",
+        "action": "App\\Http\\Controllers\\ReceiptController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "receipts",
+        "name": "receipts.store",
+        "action": "App\\Http\\Controllers\\ReceiptController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "receipts\/{receipt}",
+        "name": "receipts.show",
+        "action": "App\\Http\\Controllers\\ReceiptController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "receipts\/{receipt}\/edit",
+        "name": "receipts.edit",
+        "action": "App\\Http\\Controllers\\ReceiptController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "receipts\/{receipt}",
+        "name": "receipts.update",
+        "action": "App\\Http\\Controllers\\ReceiptController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "receipts\/{receipt}",
+        "name": "receipts.destroy",
+        "action": "App\\Http\\Controllers\\ReceiptController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "receipts\/company_invoices",
+        "name": "receipts.company_invoices",
+        "action": "App\\Http\\Controllers\\ReceiptController@company_invoices",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payments",
+        "name": "payments.index",
+        "action": "App\\Http\\Controllers\\PaymentController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payments\/create",
+        "name": "payments.create",
+        "action": "App\\Http\\Controllers\\PaymentController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "payments",
+        "name": "payments.store",
+        "action": "App\\Http\\Controllers\\PaymentController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payments\/{payment}",
+        "name": "payments.show",
+        "action": "App\\Http\\Controllers\\PaymentController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payments\/{payment}\/edit",
+        "name": "payments.edit",
+        "action": "App\\Http\\Controllers\\PaymentController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "payments\/{payment}",
+        "name": "payments.update",
+        "action": "App\\Http\\Controllers\\PaymentController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "payments\/{payment}",
+        "name": "payments.destroy",
+        "action": "App\\Http\\Controllers\\PaymentController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "payments\/vendor_invoices",
+        "name": "receipts.vendor_invoices",
+        "action": "App\\Http\\Controllers\\PaymentController@vendor_invoices",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "cheques",
+        "name": "cheques.index",
+        "action": "App\\Http\\Controllers\\ChequeController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "cheques\/create",
+        "name": "cheques.create",
+        "action": "App\\Http\\Controllers\\ChequeController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "cheques",
+        "name": "cheques.store",
+        "action": "App\\Http\\Controllers\\ChequeController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "cheques\/{cheque}",
+        "name": "cheques.show",
+        "action": "App\\Http\\Controllers\\ChequeController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "cheques\/{cheque}\/edit",
+        "name": "cheques.edit",
+        "action": "App\\Http\\Controllers\\ChequeController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "cheques\/{cheque}",
+        "name": "cheques.update",
+        "action": "App\\Http\\Controllers\\ChequeController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "cheques\/{cheque}",
+        "name": "cheques.destroy",
+        "action": "App\\Http\\Controllers\\ChequeController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "requestForms",
+        "name": "requestForms.index",
+        "action": "App\\Http\\Controllers\\RequestFormController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "requestForms\/create",
+        "name": "requestForms.create",
+        "action": "App\\Http\\Controllers\\RequestFormController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "requestForms",
+        "name": "requestForms.store",
+        "action": "App\\Http\\Controllers\\RequestFormController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "requestForms\/{requestForm}",
+        "name": "requestForms.show",
+        "action": "App\\Http\\Controllers\\RequestFormController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "requestForms\/{requestForm}\/edit",
+        "name": "requestForms.edit",
+        "action": "App\\Http\\Controllers\\RequestFormController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "requestForms\/{requestForm}",
+        "name": "requestForms.update",
+        "action": "App\\Http\\Controllers\\RequestFormController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "requestForms\/{requestForm}",
+        "name": "requestForms.destroy",
+        "action": "App\\Http\\Controllers\\RequestFormController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashes",
+        "name": "pettyCashes.index",
+        "action": "App\\Http\\Controllers\\PettyCashController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashes\/create",
+        "name": "pettyCashes.create",
+        "action": "App\\Http\\Controllers\\PettyCashController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "pettyCashes",
+        "name": "pettyCashes.store",
+        "action": "App\\Http\\Controllers\\PettyCashController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashes\/{pettyCash}",
+        "name": "pettyCashes.show",
+        "action": "App\\Http\\Controllers\\PettyCashController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashes\/{pettyCash}\/edit",
+        "name": "pettyCashes.edit",
+        "action": "App\\Http\\Controllers\\PettyCashController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "pettyCashes\/{pettyCash}",
+        "name": "pettyCashes.update",
+        "action": "App\\Http\\Controllers\\PettyCashController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "pettyCashes\/{pettyCash}",
+        "name": "pettyCashes.destroy",
+        "action": "App\\Http\\Controllers\\PettyCashController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashExpenses",
+        "name": "pettyCashExpenses.index",
+        "action": "App\\Http\\Controllers\\PettyCashExpenseController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashExpenses\/create",
+        "name": "pettyCashExpenses.create",
+        "action": "App\\Http\\Controllers\\PettyCashExpenseController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "pettyCashExpenses",
+        "name": "pettyCashExpenses.store",
+        "action": "App\\Http\\Controllers\\PettyCashExpenseController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashExpenses\/{pettyCashExpense}",
+        "name": "pettyCashExpenses.show",
+        "action": "App\\Http\\Controllers\\PettyCashExpenseController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pettyCashExpenses\/{pettyCashExpense}\/edit",
+        "name": "pettyCashExpenses.edit",
+        "action": "App\\Http\\Controllers\\PettyCashExpenseController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "pettyCashExpenses\/{pettyCashExpense}",
+        "name": "pettyCashExpenses.update",
+        "action": "App\\Http\\Controllers\\PettyCashExpenseController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "pettyCashExpenses\/{pettyCashExpense}",
+        "name": "pettyCashExpenses.destroy",
+        "action": "App\\Http\\Controllers\\PettyCashExpenseController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "task",
+        "name": "task.index",
+        "action": "App\\Http\\Controllers\\TaskController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "task\/create",
+        "name": "task.create",
+        "action": "App\\Http\\Controllers\\TaskController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "task",
+        "name": "task.store",
+        "action": "App\\Http\\Controllers\\TaskController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "task\/{task}",
+        "name": "task.show",
+        "action": "App\\Http\\Controllers\\TaskController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "task\/{task}\/edit",
+        "name": "task.edit",
+        "action": "App\\Http\\Controllers\\TaskController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "task\/{task}",
+        "name": "task.update",
+        "action": "App\\Http\\Controllers\\TaskController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "task\/{task}",
+        "name": "task.destroy",
+        "action": "App\\Http\\Controllers\\TaskController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings\/dashboard",
+        "name": "payment-bookings.dashboard",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@dashboard",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings\/approvals",
+        "name": "payment-bookings.approvals",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@approvals",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings\/{id}\/submit",
+        "name": "payment-bookings.submit",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@submit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings\/{id}\/resume",
+        "name": "payment-bookings.resume",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@resume",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "payment-bookings\/{id}\/approve",
+        "name": "payment-bookings.approve",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@approve",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "payment-bookings\/{id}\/reject",
+        "name": "payment-bookings.reject",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@reject",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "payment-bookings\/{id}\/hold",
+        "name": "payment-bookings.hold",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@hold",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings",
+        "name": "payment-bookings.index",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings\/create",
+        "name": "payment-bookings.create",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "payment-bookings",
+        "name": "payment-bookings.store",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings\/{payment_booking}",
+        "name": "payment-bookings.show",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "payment-bookings\/{payment_booking}\/edit",
+        "name": "payment-bookings.edit",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "payment-bookings\/{payment_booking}",
+        "name": "payment-bookings.update",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "payment-bookings\/{payment_booking}",
+        "name": "payment-bookings.destroy",
+        "action": "App\\Http\\Controllers\\PaymentBookingController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "reports\/pettycash\/users",
+        "name": "reports.petty_cash_users",
+        "action": "App\\Http\\Controllers\\ReportController@petty_cash_users",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "reports\/pettycash\/register",
+        "name": "reports.petty_cash_register",
+        "action": "App\\Http\\Controllers\\ReportController@petty_cash_register",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "reports\/payment",
+        "name": "reports.payment",
+        "action": "App\\Http\\Controllers\\ReportController@payment",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "reports\/receipt",
+        "name": "reports.receipt",
+        "action": "App\\Http\\Controllers\\ReportController@receipt",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "reports\/invoice",
+        "name": "reports.invoice",
+        "action": "App\\Http\\Controllers\\ReportController@invoice",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "reports\/account",
+        "name": "reports.account",
+        "action": "App\\Http\\Controllers\\ReportController@account",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "reports\/trial-balance",
+        "name": "reports.trial_balance",
+        "action": "App\\Http\\Controllers\\ReportController@trial_balance",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "employees",
+        "name": "employees.index",
+        "action": "App\\Http\\Controllers\\EmployeeController@index",
+        "middleware": [
+            "web",
+            "auth",
+            "can:employees"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "employees\/create",
+        "name": "employees.create",
+        "action": "App\\Http\\Controllers\\EmployeeController@create",
+        "middleware": [
+            "web",
+            "auth",
+            "can:employees"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "employees",
+        "name": "employees.store",
+        "action": "App\\Http\\Controllers\\EmployeeController@store",
+        "middleware": [
+            "web",
+            "auth",
+            "can:employees"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "employees\/{employee}",
+        "name": "employees.show",
+        "action": "App\\Http\\Controllers\\EmployeeController@show",
+        "middleware": [
+            "web",
+            "auth",
+            "can:employees"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "employees\/{employee}\/edit",
+        "name": "employees.edit",
+        "action": "App\\Http\\Controllers\\EmployeeController@edit",
+        "middleware": [
+            "web",
+            "auth",
+            "can:employees"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "employees\/{employee}",
+        "name": "employees.update",
+        "action": "App\\Http\\Controllers\\EmployeeController@update",
+        "middleware": [
+            "web",
+            "auth",
+            "can:employees"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "employees\/{employee}",
+        "name": "employees.destroy",
+        "action": "App\\Http\\Controllers\\EmployeeController@destroy",
+        "middleware": [
+            "web",
+            "auth",
+            "can:employees"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf",
+        "name": "staf.index",
+        "action": "App\\Http\\Controllers\\StafProfileController@index",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf\/create",
+        "name": "staf.create",
+        "action": "App\\Http\\Controllers\\StafProfileController@create",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "staf",
+        "name": "staf.store",
+        "action": "App\\Http\\Controllers\\StafProfileController@store",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf\/{staf}",
+        "name": "staf.show",
+        "action": "App\\Http\\Controllers\\StafProfileController@show",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf\/{staf}\/edit",
+        "name": "staf.edit",
+        "action": "App\\Http\\Controllers\\StafProfileController@edit",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "staf\/{staf}",
+        "name": "staf.update",
+        "action": "App\\Http\\Controllers\\StafProfileController@update",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "staf\/{staf}",
+        "name": "staf.destroy",
+        "action": "App\\Http\\Controllers\\StafProfileController@destroy",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf\/document\/{id}",
+        "name": "staf_document",
+        "action": "App\\Http\\Controllers\\StafProfileController@document",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf\/date\/{id}",
+        "name": "staf_date",
+        "action": "App\\Http\\Controllers\\StafProfileController@date",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "staf\/date\/{id}",
+        "name": "staf_date_destroy",
+        "action": "App\\Http\\Controllers\\StafProfileController@date_delete",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf\/show_request_form\/{id}",
+        "name": "show_staff_request_form",
+        "action": "App\\Http\\Controllers\\StafProfileController@show_staff_request_form",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "staf\/show_request_form",
+        "name": "staff_request_form",
+        "action": "App\\Http\\Controllers\\StafProfileController@staff_request_form",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "staf\/request\/{request_id}\/update_status",
+        "name": "staffRequests.update_status",
+        "action": "App\\Http\\Controllers\\StafProfileController@update_status",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "staf\/request\/{id}",
+        "name": "staf_request_destroy",
+        "action": "App\\Http\\Controllers\\StafProfileController@destroy_staff_request",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf-dates",
+        "name": "staf-dates.index",
+        "action": "App\\Http\\Controllers\\StafDateController@index",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf-dates\/create",
+        "name": "staf-dates.create",
+        "action": "App\\Http\\Controllers\\StafDateController@create",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "staf-dates",
+        "name": "staf-dates.store",
+        "action": "App\\Http\\Controllers\\StafDateController@store",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf-dates\/{staf_date}",
+        "name": "staf-dates.show",
+        "action": "App\\Http\\Controllers\\StafDateController@show",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf-dates\/{staf_date}\/edit",
+        "name": "staf-dates.edit",
+        "action": "App\\Http\\Controllers\\StafDateController@edit",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "staf-dates\/{staf_date}",
+        "name": "staf-dates.update",
+        "action": "App\\Http\\Controllers\\StafDateController@update",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "staf-dates\/{staf_date}",
+        "name": "staf-dates.destroy",
+        "action": "App\\Http\\Controllers\\StafDateController@destroy",
+        "middleware": [
+            "web",
+            "auth",
+            "can:stafprofile"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staffRequests",
+        "name": "staff_requests",
+        "action": "App\\Http\\Controllers\\StafProfileController@staff_requests",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "own-staff-request",
+        "name": "own_requests.index",
+        "action": "App\\Http\\Controllers\\StaffOwnRequestController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "own-staff-request\/create",
+        "name": "own_requests.create",
+        "action": "App\\Http\\Controllers\\StaffOwnRequestController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "own-staff-request",
+        "name": "own_requests.store",
+        "action": "App\\Http\\Controllers\\StaffOwnRequestController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "request-approvals",
+        "name": "request_approvals.index",
+        "action": "App\\Http\\Controllers\\RequestApprovalController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "request-approvals\/{type}\/{id}",
+        "name": "request_approvals.show",
+        "action": "App\\Http\\Controllers\\RequestApprovalController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "request-approvals\/{type}\/{id}\/approve",
+        "name": "request_approvals.approve",
+        "action": "App\\Http\\Controllers\\RequestApprovalController@approve",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "request-approvals\/{type}\/{id}\/disapprove",
+        "name": "request_approvals.disapprove",
+        "action": "App\\Http\\Controllers\\RequestApprovalController@disapprove",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "document",
+        "name": "document.index",
+        "action": "App\\Http\\Controllers\\DocumentController@index",
+        "middleware": [
+            "web",
+            "auth",
+            "can:document"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "document\/create",
+        "name": "document.create",
+        "action": "App\\Http\\Controllers\\DocumentController@create",
+        "middleware": [
+            "web",
+            "auth",
+            "can:document"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "document",
+        "name": "document.store",
+        "action": "App\\Http\\Controllers\\DocumentController@store",
+        "middleware": [
+            "web",
+            "auth",
+            "can:document"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "document\/{document}",
+        "name": "document.show",
+        "action": "App\\Http\\Controllers\\DocumentController@show",
+        "middleware": [
+            "web",
+            "auth",
+            "can:document"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "document\/{document}\/edit",
+        "name": "document.edit",
+        "action": "App\\Http\\Controllers\\DocumentController@edit",
+        "middleware": [
+            "web",
+            "auth",
+            "can:document"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "document\/{document}",
+        "name": "document.update",
+        "action": "App\\Http\\Controllers\\DocumentController@update",
+        "middleware": [
+            "web",
+            "auth",
+            "can:document"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "document\/{document}",
+        "name": "document.destroy",
+        "action": "App\\Http\\Controllers\\DocumentController@destroy",
+        "middleware": [
+            "web",
+            "auth",
+            "can:document"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staffPayrolls",
+        "name": "staffPayrolls.index",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staffPayrolls\/create",
+        "name": "staffPayrolls.create",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "staffPayrolls",
+        "name": "staffPayrolls.store",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staffPayrolls\/{staffPayroll}",
+        "name": "staffPayrolls.show",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staffPayrolls\/{staffPayroll}\/edit",
+        "name": "staffPayrolls.edit",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "staffPayrolls\/{staffPayroll}",
+        "name": "staffPayrolls.update",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "staffPayrolls\/{staffPayroll}",
+        "name": "staffPayrolls.destroy",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staffPayrolls\/members\/{type}\/list\/{date}",
+        "name": "staffPayrolls.get_members_list",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@get_members_list",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staffPayrolls\/{id}\/export-pdf",
+        "name": "staffPayrolls.exportPdf",
+        "action": "App\\Http\\Controllers\\StaffPayrollController@exportPdf",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries",
+        "name": "inquiries.index",
+        "action": "App\\Http\\Controllers\\InquiryController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/create",
+        "name": "inquiries.create",
+        "action": "App\\Http\\Controllers\\InquiryController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "inquiries",
+        "name": "inquiries.store",
+        "action": "App\\Http\\Controllers\\InquiryController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/{inquiry}",
+        "name": "inquiries.show",
+        "action": "App\\Http\\Controllers\\InquiryController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/{inquiry}\/edit",
+        "name": "inquiries.edit",
+        "action": "App\\Http\\Controllers\\InquiryController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "inquiries\/{inquiry}",
+        "name": "inquiries.update",
+        "action": "App\\Http\\Controllers\\InquiryController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "inquiries\/{inquiry}",
+        "name": "inquiries.destroy",
+        "action": "App\\Http\\Controllers\\InquiryController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/engineer\/my-visits",
+        "name": "inquiries.engineer.index",
+        "action": "App\\Http\\Controllers\\InquiryEngineerController@indexMyVisits",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/department\/my-inquiries",
+        "name": "inquiries.department.index",
+        "action": "App\\Http\\Controllers\\InquiryDepartmentController@indexMyInquiries",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/sales\/pipeline",
+        "name": "inquiries.sales.index",
+        "action": "App\\Http\\Controllers\\InquirySalesController@indexPipeline",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/{inquiry}\/department\/review",
+        "name": "inquiries.department.create",
+        "action": "App\\Http\\Controllers\\InquiryDepartmentController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "inquiries\/{inquiry}\/department\/review",
+        "name": "inquiries.department.store",
+        "action": "App\\Http\\Controllers\\InquiryDepartmentController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "inquiries\/{inquiry}\/department\/forward-sales",
+        "name": "inquiries.department.forward-sales",
+        "action": "App\\Http\\Controllers\\InquiryDepartmentController@forwardToSales",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/{inquiry}\/department\/quotation",
+        "name": "inquiries.department.create-quotation",
+        "action": "App\\Http\\Controllers\\InquiryDepartmentController@createQuotation",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "inquiries\/{inquiry}\/department\/quotation",
+        "name": "inquiries.department.quotation.store",
+        "action": "App\\Http\\Controllers\\InquiryDepartmentController@storeQuotation",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "inquiries\/{inquiry}\/engineer\/report",
+        "name": "inquiries.engineer.create",
+        "action": "App\\Http\\Controllers\\InquiryEngineerController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "inquiries\/{inquiry}\/engineer\/report",
+        "name": "inquiries.engineer.store",
+        "action": "App\\Http\\Controllers\\InquiryEngineerController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "inquiries\/{inquiry}\/sales\/follow-up",
+        "name": "inquiries.sales.follow-up.store",
+        "action": "App\\Http\\Controllers\\InquirySalesController@storeFollowUp",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "inquiries\/{inquiry}\/sales\/close",
+        "name": "inquiries.sales.close",
+        "action": "App\\Http\\Controllers\\InquirySalesController@close",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staf-profile\/expiry-list",
+        "name": "staf-profile.expiry-list",
+        "action": "App\\Http\\Controllers\\StafProfileController@expiryList",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "products",
+        "name": "products.index",
+        "action": "App\\Http\\Controllers\\ProductController@index",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "products\/create",
+        "name": "products.create",
+        "action": "App\\Http\\Controllers\\ProductController@create",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "products",
+        "name": "products.store",
+        "action": "App\\Http\\Controllers\\ProductController@store",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "products\/{product}",
+        "name": "products.show",
+        "action": "App\\Http\\Controllers\\ProductController@show",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "products\/{product}\/edit",
+        "name": "products.edit",
+        "action": "App\\Http\\Controllers\\ProductController@edit",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "PUT",
+            "PATCH"
+        ],
+        "uri": "products\/{product}",
+        "name": "products.update",
+        "action": "App\\Http\\Controllers\\ProductController@update",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "products\/{product}",
+        "name": "products.destroy",
+        "action": "App\\Http\\Controllers\\ProductController@destroy",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "labor\/show_request_form",
+        "name": null,
+        "action": "App\\Http\\Controllers\\LaborRequestController@show_labor_request_form",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "labor\/show_request_form",
+        "name": "labor_request_form",
+        "action": "App\\Http\\Controllers\\LaborRequestController@labor_request_form",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "labor-system",
+        "name": "labor_system",
+        "action": "App\\Http\\Controllers\\LaborController@showLaborSystem",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "labor-system\/laborers",
+        "name": "labor.getLaborers",
+        "action": "App\\Http\\Controllers\\LaborController@getLaborers",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "labor-system\/projects",
+        "name": "labor.getProjects",
+        "action": "App\\Http\\Controllers\\LaborController@getProjects",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "labor-system\/assign",
+        "name": "labor.assignLabor",
+        "action": "App\\Http\\Controllers\\LaborController@assignLabor",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "labor-system\/assignments",
+        "name": "labor.assignments",
+        "action": "App\\Http\\Controllers\\LaborController@getLabourAssignments",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "visit-schedules",
+        "name": "labor.getVisitSchedules",
+        "action": "App\\Http\\Controllers\\LaborController@getVisitSchedules",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "monthly-report",
+        "name": "labor.monthlyReport",
+        "action": "App\\Http\\Controllers\\LaborController@monthlyReport",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "attendance\/delete-group",
+        "name": "attendance.deleteGroup",
+        "action": "App\\Http\\Controllers\\LaborController@deleteGroup",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "attendance\/edit-group",
+        "name": "attendance.editGroup",
+        "action": "App\\Http\\Controllers\\LaborController@editGroup",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "attendance\/update-group",
+        "name": "attendance.updateGroup",
+        "action": "App\\Http\\Controllers\\LaborController@updateGroup",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "tickets\/status",
+        "name": "tickets.status",
+        "action": "App\\Http\\Controllers\\TicketController@statusIndex",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "tickets\/update-status\/{id}",
+        "name": "tickets.updateStatus",
+        "action": "App\\Http\\Controllers\\TicketController@updateStatus",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "tickets",
+        "name": "tickets.index",
+        "action": "App\\Http\\Controllers\\TicketController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "tickets\/create",
+        "name": "tickets.create",
+        "action": "App\\Http\\Controllers\\TicketController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "tickets",
+        "name": "tickets.store",
+        "action": "App\\Http\\Controllers\\TicketController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "tickets\/{id}",
+        "name": "tickets.show",
+        "action": "App\\Http\\Controllers\\TicketController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "tickets\/{id}\/edit",
+        "name": "tickets.edit",
+        "action": "App\\Http\\Controllers\\TicketController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT"
+        ],
+        "uri": "tickets\/{id}",
+        "name": "tickets.update",
+        "action": "App\\Http\\Controllers\\TicketController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "tickets\/{id}",
+        "name": "tickets.destroy",
+        "action": "App\\Http\\Controllers\\TicketController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "letters",
+        "name": "letters.index",
+        "action": "App\\Http\\Controllers\\LetterController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "letters\/create",
+        "name": "letters.create",
+        "action": "App\\Http\\Controllers\\LetterController@create",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "letters",
+        "name": "letters.store",
+        "action": "App\\Http\\Controllers\\LetterController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "letters\/{letter}",
+        "name": "letters.show",
+        "action": "App\\Http\\Controllers\\LetterController@show",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "letters\/{letter}\/edit",
+        "name": "letters.edit",
+        "action": "App\\Http\\Controllers\\LetterController@edit",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "PUT"
+        ],
+        "uri": "letters\/{letter}",
+        "name": "letters.update",
+        "action": "App\\Http\\Controllers\\LetterController@update",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "DELETE"
+        ],
+        "uri": "letters\/{letter}",
+        "name": "letters.destroy",
+        "action": "App\\Http\\Controllers\\LetterController@destroy",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staff-ratings",
+        "name": "staff-ratings.index",
+        "action": "App\\Http\\Controllers\\StaffRatingController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "staff-ratings\/{stafProfile}",
+        "name": "staff-ratings.store",
+        "action": "App\\Http\\Controllers\\StaffRatingController@store",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staff-ratings\/report",
+        "name": "staff-ratings.report",
+        "action": "App\\Http\\Controllers\\StaffRatingController@monthlyReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "staff-ratings\/timeline",
+        "name": "staff-ratings.timeline",
+        "action": "App\\Http\\Controllers\\StaffRatingController@adminTimeline",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/home",
+        "name": "pwa.home",
+        "action": "App\\Http\\Controllers\\PWAController@home",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/login",
+        "name": "pwa.login",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/offline",
+        "name": "pwa.offline",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/absents",
+        "name": "pwa.attendance",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/confirmation",
+        "name": "pwa.confirmation",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/absent-history",
+        "name": "pwa.history",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/presents",
+        "name": "pwa.present",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/sites",
+        "name": "pwa.sites.index",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/sites\/create",
+        "name": "pwa.sites.create",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/sites\/{id}\/edit",
+        "name": "pwa.sites.edit",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/present-history",
+        "name": "pwa.presents",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pwa\/qr-scanner",
+        "name": "pwa.qr-scanner",
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pending-attendance",
+        "name": "pending.attendance",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pending-attendance\/data",
+        "name": "pending.attendance.data",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@data",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "pending-attendance\/{id}\/approve",
+        "name": "pending.attendance.approve",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@approve",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "pending-attendance\/{id}\/reject",
+        "name": "pending.attendance.reject",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@reject",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "pending-attendance\/export",
+        "name": "pending.attendance.export",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@absentReportExport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "attendance\/presents",
+        "name": "attendance.presents",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@presentsIndex",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "attendance\/presents\/data",
+        "name": "attendance.presents.data",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@presentsData",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "attendance\/presents\/export",
+        "name": "attendance.presents.export",
+        "action": "App\\Http\\Controllers\\PendingAttendanceController@presentsReportExport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "attendance\/qr-overtime",
+        "name": "attendance.qr-overtime.index",
+        "action": "App\\Http\\Controllers\\QrStaffAttendanceAdminController@index",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "attendance\/qr-overtime\/data",
+        "name": "attendance.qr-overtime.data",
+        "action": "App\\Http\\Controllers\\QrStaffAttendanceAdminController@data",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "POST"
+        ],
+        "uri": "attendance\/qr-overtime\/{id}\/review",
+        "name": "attendance.qr-overtime.review",
+        "action": "App\\Http\\Controllers\\QrStaffAttendanceAdminController@review",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance",
+        "name": "qr-attendance.index",
+        "action": "Closure",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance\/confirmation",
+        "name": "qr-attendance.confirmation",
+        "action": "Closure",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance\/report\/user\/{userId}",
+        "name": "qr-attendance.user-report",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@userReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance\/report\/all",
+        "name": "qr-attendance.all-users-report",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@allUsersReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance\/export\/user\/{userId}",
+        "name": "qr-attendance.export-user",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@exportUserReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance\/export\/all",
+        "name": "qr-attendance.export-all",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@exportAllUsersReport",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance\/api\/user-report-data\/{userId}",
+        "name": "qr-attendance.api.user-report-data",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@getUserReportData",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "qr-attendance\/api\/all-users-report-data",
+        "name": "qr-attendance.api.all-users-report-data",
+        "action": "App\\Http\\Controllers\\API\\Attendance\\QRAttendanceController@getAllUsersReportData",
+        "middleware": [
+            "web",
+            "auth"
+        ]
+    },
+    {
+        "methods": [
+            "GET",
+            "HEAD"
+        ],
+        "uri": "temp\/send-morning-summary",
+        "name": null,
+        "action": "Closure",
+        "middleware": [
+            "web"
+        ]
+    }
+]

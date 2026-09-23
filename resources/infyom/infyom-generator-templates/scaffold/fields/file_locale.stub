@@ -1,0 +1,17 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="form-group col-sm-6">
+    <div class="custom-file">
+        {!! Form::file('$FIELD_NAME$',['class' => 'custom-file-input']) !!}
+        {!! Form::label('$FIELD_NAME$', __('models/$TABLE_NAME$.fields.$FIELD_NAME$').':' , ['class' => 'custom-file-label']) !!}
+    </div>
+</div>
+
+@section('scripts')
+@parent
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+@endsection

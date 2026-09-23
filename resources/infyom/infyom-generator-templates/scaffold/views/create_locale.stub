@@ -1,0 +1,33 @@
+@extends('layouts.master')
+
+@section('content')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@lang('crud.add_new') @lang('models/$MODEL_NAME_PLURAL_CAMEL$.singular')</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') !!}">@lang('models/$MODEL_NAME_PLURAL_CAMEL$.singular')</a></li>
+                    <li class="breadcrumb-item active">@lang('crud.add_new')</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card card-primary card-outline card-maroon">
+                <div class="card-body">
+                    {!! Form::open(['route' => '$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.store'$FILES$]) !!}
+                        @include(strtolower(__('models/$MODEL_NAME_PLURAL_CAMEL$.plural')).'.fields')
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+

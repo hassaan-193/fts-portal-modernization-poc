@@ -1,0 +1,26 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+		"name": "account_id",
+		"dbType": "integer:unsigned:foreign,acounts,id",
+		"htmlType": "selectTable:accounts:name,id",
+		"validations": "required",
+		"searchable": false,
+		"fillable": true,
+		"primary": false,
+		"inForm": true,
+		"inIndex": false,
+		"inView": true
+	}
+]

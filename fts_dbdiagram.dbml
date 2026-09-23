@@ -1,0 +1,1312 @@
+// ================================================================
+// FTS Portal — Complete Database Schema for dbdiagram.io
+// Project: ft_portal_base | Database: fts_portal
+// Tables: 80 | FK Relationships: 86
+// Generated from live MySQL schema dump
+// Paste this code at: https://dbdiagram.io/d
+// ================================================================
+
+// ────────────────────────────────────────────
+// AUTHENTICATION & RBAC
+// ────────────────────────────────────────────
+
+Table users [note: 'Authentication & RBAC'] {
+  id bigint [pk, increment, not null]
+  name varchar(191)
+  email varchar(191) [not null]
+  email_verified_at timestamp
+  password varchar(191) [not null]
+  image varchar(191)
+  remember_token varchar(100)
+  created_at timestamp
+  updated_at timestamp
+  firebase_token varchar(191)
+  api_token varchar(80)
+  staf_profile_id int
+  balance float [not null]
+  deleted_at timestamp
+}
+
+Table roles [note: 'Authentication & RBAC'] {
+  id bigint [pk, increment, not null]
+  name varchar(191) [not null]
+  guard_name varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table permissions [note: 'Authentication & RBAC'] {
+  id bigint [pk, increment, not null]
+  name varchar(191) [not null]
+  guard_name varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table model_has_roles [note: 'Authentication & RBAC'] {
+  role_id bigint [pk, not null]
+  model_type varchar(191) [pk, not null]
+  model_id bigint [pk, not null]
+}
+
+Table model_has_permissions [note: 'Authentication & RBAC'] {
+  permission_id bigint [pk, not null]
+  model_type varchar(191) [pk, not null]
+  model_id bigint [pk, not null]
+}
+
+Table role_has_permissions [note: 'Authentication & RBAC'] {
+  permission_id bigint [pk, not null]
+  role_id bigint [pk, not null]
+}
+
+Table password_resets [note: 'Authentication & RBAC'] {
+  email varchar(191) [not null]
+  token varchar(191) [not null]
+  created_at timestamp
+}
+
+Table verify_emails [note: 'Authentication & RBAC'] {
+  email varchar(191) [not null]
+  token varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ────────────────────────────────────────────
+// CLIENT CRM
+// ────────────────────────────────────────────
+
+Table companies [note: 'Client CRM'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  email varchar(191)
+  contact_person varchar(191)
+  contact_no varchar(191)
+  contact_no_two varchar(191)
+  vat_no varchar(191)
+  location text
+  file text
+  billing_address text
+  billing_contact_person varchar(191)
+  billing_pob varchar(191)
+  billing_email varchar(191)
+  shipping_address varchar(191)
+  shipping_contact_person varchar(191)
+  shipping_pob varchar(191)
+  shipping_email varchar(191)
+  payment_terms varchar(191)
+  credit_limit varchar(191)
+  password varchar(191)
+  remember_token varchar(100)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table inquiries [note: 'Client CRM'] {
+  id bigint [pk, increment, not null]
+  inquiry_no varchar(191) [not null]
+  created_by bigint
+  client_name varchar(191) [not null]
+  phone varchar(20) [not null]
+  email varchar(191)
+  location text
+  project varchar(191)
+  inquiry_type enum('project','amc','installation','other') [not null]
+  other_type varchar(191)
+  source enum('call','email','walk-in','website','referral') [not null]
+  expected_price decimal(15,2)
+  status enum('new','assigned','under review','site visit pending','site visit done','sent to sales','quotation created','under follow-up','won','lost','closed') [not null, default: 'New']
+  priority enum('low','medium','high') [not null, default: 'Medium']
+  follow_up_date date
+  expected_closing_date date
+  assigned_department varchar(191)
+  notes text
+  metadata longtext
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table inquiry_department_reviews [note: 'Client CRM'] {
+  id bigint [pk, increment, not null]
+  inquiry_id bigint [not null]
+  assigned_department varchar(191) [not null]
+  assigned_to bigint
+  assignment_date timestamp
+  current_status varchar(191)
+  internal_comments text
+  priority enum('low','medium','high') [not null, default: 'Medium']
+  response_deadline timestamp
+  technical_review_status varchar(191)
+  site_visit_required boolean [not null, default: '0']
+  proposed_visit_date date
+  visit_assigned_to bigint
+  visit_notes text
+  reviewed_by bigint
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table inquiry_engineer_reports [note: 'Client CRM'] {
+  id bigint [pk, increment, not null]
+  inquiry_id bigint [not null]
+  visit_completed boolean [not null, default: '0']
+  site_condition_notes text
+  scope_understanding text
+  materials_required text
+  challenges_risks text
+  estimated_cost decimal(15,2)
+  submitted_by bigint
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table inquiry_follow_ups [note: 'Client CRM'] {
+  id bigint [pk, increment, not null]
+  inquiry_id bigint [not null, ref: > inquiries.id]
+  follow_up_date date [not null]
+  follow_up_notes text
+  client_feedback text
+  status varchar(191)
+  created_by bigint
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table inquiry_quotations [note: 'Client CRM'] {
+  id bigint [pk, increment, not null]
+  inquiry_id bigint [not null]
+  quotation_amount decimal(15,2)
+  scope_of_work text
+  terms_conditions text
+  validity_date date
+  created_by bigint
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table inquiry_routing_configs [note: 'Client CRM'] {
+  id bigint [pk, increment, not null]
+  inquiry_type varchar(191) [not null]
+  department varchar(191) [not null]
+  is_active boolean [not null, default: '1']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table inquiry_activities [note: 'Client CRM'] {
+  id bigint [pk, increment, not null]
+  inquiry_id bigint [not null]
+  user_id bigint
+  action varchar(191) [not null]
+  description text
+  metadata longtext
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ────────────────────────────────────────────
+// QUOTATIONS & PRODUCTS
+// ────────────────────────────────────────────
+
+Table quotations [note: 'Quotations & Products'] {
+  id int [pk, increment, not null]
+  reference_project_id int
+  name varchar(191) [not null]
+  company_id int [not null, ref: > companies.id]
+  ref_no varchar(191)
+  quotation_type_id int
+  quotation_company int
+  amount float [not null]
+  vat float [not null]
+  total_amount float [not null]
+  date date
+  subject varchar(191)
+  location text
+  file text
+  payment text
+  exclusion text
+  status int [not null, default: '0']
+  approved_by bigint
+  created_at timestamp
+  updated_at timestamp
+  category varchar(191)
+  number_of_visits int
+}
+
+Table quotation_products [note: 'Quotations & Products'] {
+  id int [pk, increment, not null]
+  quotation_id int [not null, ref: > quotations.id]
+  product_id int [not null, ref: > products.id]
+  quantity int [not null]
+  unit_price decimal(10,2) [not null]
+  total_price decimal(10,2) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table products [note: 'Quotations & Products'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  price float [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table lpoins [note: 'Quotations & Products'] {
+  id int [pk, increment, not null]
+  quotation_id int [not null, ref: > quotations.id]
+  ref_no varchar(191)
+  payment_terms varchar(191)
+  civil_defence_fee float [not null, default: '0']
+  government_fee float [not null, default: '0']
+  adjustment_fee float [not null, default: '0']
+  date_issue date
+  date_due date
+  amount float
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ────────────────────────────────────────────
+// PROJECTS & AMC
+// ────────────────────────────────────────────
+
+Table projects [note: 'Projects & AMC'] {
+  id int [pk, increment, not null]
+  date date
+  quotation_id int [not null, ref: > quotations.id]
+  project_type_id int [not null]
+  subject varchar(191)
+  payment_terms varchar(191)
+  labour_charges float
+  material_charges float
+  project_source varchar(191)
+  project_estimation varchar(191)
+  user_id int
+  note text
+  created_at timestamp
+  updated_at timestamp
+  category varchar(191) [not null, default: 'normal']
+  visits int
+  visit_schedule longtext
+}
+
+Table project_types [note: 'Projects & AMC'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table project_extension [note: 'Projects & AMC'] {
+  id bigint [pk, increment, not null]
+  name varchar(191) [not null]
+  value float [not null]
+  project_id int [not null, ref: > projects.id]
+  quotation_id int [not null, ref: > quotations.id]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table project_lpoout [note: 'Projects & AMC'] {
+  id bigint [pk, increment, not null]
+  project_id int [not null, ref: > projects.id]
+  lpoout_id int [not null, ref: > lpoouts.id]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table projectreports [note: 'Projects & AMC'] {
+  id int [pk, increment, not null]
+  reference_number varchar(191) [not null]
+  date date [not null]
+  inspector_visiting_time time
+  inspector_leaving_time time
+  company_id int [ref: > companies.id]
+  is_manual_client boolean [not null, default: '0']
+  manual_client_name varchar(191)
+  project_id int [ref: > projects.id]
+  visit_schedule_id bigint [ref: > visit_schedules.id]
+  is_emergency_visit boolean [not null, default: '0']
+  emergency_visit_date date
+  amc_type enum('existing','new') [not null, default: 'existing']
+  site_location varchar(191)
+  site_name varchar(191)
+  used_items text
+  required_items text
+  block_info longtext
+  note text
+  client_signature text
+  file_path longtext
+  status enum('draft','pending','approved','disapproved') [not null, default: 'pending']
+  created_by bigint [ref: > users.id]
+  created_at timestamp
+  updated_at timestamp
+  fire_alarm_data longtext
+  fire_fighting_data longtext
+  fm200_data longtext
+  foam_tank_data longtext
+  voice_evacuation_data longtext
+  emergency_lighting_data longtext
+  system_interfacing_data longtext
+  exit_route_data longtext
+  storage_conditions_data longtext
+  pump_data longtext
+  deluge_data longtext
+  urgent_summary longtext
+  photos_data longtext
+  scope_data longtext
+  next_due_dates longtext
+  notes_used_items text
+  next_inspection_due date
+  expiry_update_required_on date
+  client_eid_details varchar(191)
+  client_phone varchar(191)
+}
+
+Table amc_report_system_items [note: 'Projects & AMC'] {
+  id int [pk, increment, not null]
+  system_key varchar(50) [not null]
+  item_slug varchar(191) [not null]
+  item_label varchar(255) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table visit_schedules [note: 'Projects & AMC'] {
+  id bigint [pk, increment, not null]
+  project_id int [not null, ref: > projects.id]
+  visit_date date [not null]
+  status enum('pending','done','upcoming') [not null, default: 'pending']
+  file_uploaded boolean [not null, default: '0']
+  file_path varchar(191)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table visit_schedule_comments [note: 'Projects & AMC'] {
+  id bigint [pk, increment, not null]
+  visit_schedule_id bigint [not null, ref: > visit_schedules.id]
+  comment text [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table visit_schedule_history [note: 'Projects & AMC'] {
+  id bigint [pk, increment, not null]
+  project_id int [not null, ref: > projects.id]
+  visit_schedule_id bigint [ref: > visit_schedules.id]
+  visit_date date
+  status varchar(191) [not null]
+  company_name varchar(191) [not null]
+  project_name varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table drawing_receiveds [note: 'Projects & AMC'] {
+  id int [pk, increment, not null]
+  lpoin_id int [not null]
+  responsible_engineer_id bigint [not null]
+  type_of_work varchar(191) [not null]
+  start_date date [not null]
+  review_comments_date date
+  approval_date date
+  status varchar(191) [not null, default: 'Under Review']
+  notes longtext
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table drawing_received_contributions [note: 'Projects & AMC'] {
+  id int [pk, increment, not null]
+  drawing_received_id int [not null, ref: > drawing_receiveds.id]
+  contributed_by_id bigint [not null, ref: > users.id]
+  contribution_type varchar(191) [not null]
+  description longtext
+  status varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ────────────────────────────────────────────
+// PROCUREMENT
+// ────────────────────────────────────────────
+
+Table vendors [note: 'Procurement'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  email varchar(191)
+  emails longtext
+  contact_person varchar(191)
+  contact_no varchar(191)
+  contact_no_two varchar(191)
+  vat_no varchar(191)
+  payment_terms varchar(191)
+  terms_and_conditions longtext
+  credit_limit varchar(191)
+  location text
+  file text
+  payment_preference varchar(191) [not null, default: 'cod']
+  pdc_number_of_days int
+  pdc_payment_option varchar(191)
+  vendor_specialization varchar(191)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table lpoouts [note: 'Procurement'] {
+  id int [pk, increment, not null]
+  lpo_invoice_no varchar(191)
+  name varchar(191) [not null]
+  lpo_out_type_id int [not null]
+  project_id int [ref: > projects.id]
+  vendor_id int [not null, ref: > vendors.id]
+  trn_no varchar(191)
+  kindly_attn varchar(191)
+  date date
+  amount float [not null]
+  terms longtext
+  payment_type varchar(191)
+  cheque_date date
+  items longtext
+  pricing_mode varchar(191) [not null, default: 'unit']
+  has_item_code boolean [not null, default: '0']
+  status enum('pending','approved','not approved') [not null, default: 'Pending']
+  revision_number int [not null, default: '1']
+  parent_lpoout_id bigint
+  is_latest_revision boolean [not null, default: '1']
+  revised_by bigint
+  revision_reason text
+  revised_at timestamp
+  lpo_payment_preference_option varchar(191) [not null, default: 'default']
+  lpo_payment_preference varchar(191)
+  lpo_pdc_number_of_days int
+  lpo_pdc_payment_option varchar(191)
+  vat float [not null]
+  total_amount float [not null]
+  file text [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table lpo_out_types [note: 'Procurement'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table purchase_orders [note: 'Procurement'] {
+  id bigint [pk, increment, not null]
+  request_number varchar(191) [not null]
+  request_type varchar(191) [not null, default: 'general']
+  quotation_id bigint
+  project_id bigint
+  other_info text
+  created_by bigint
+  date date
+  due_date date
+  delivery_date date
+  items longtext
+  total_amount decimal(15,2) [not null, default: '0.00']
+  status varchar(191) [not null, default: 'Pending']
+  urgency_level enum('normal','urgent') [not null, default: 'normal']
+  department_status varchar(191) [not null, default: 'Pending']
+  department_notes text
+  sent_back_notes text
+  sent_back_at timestamp
+  sent_back_by bigint
+  sent_back_count int [not null, default: '0']
+  admin_id bigint
+  admin_notes text
+  lpout_id int
+  revised_from_lpoout_id int
+  lpout_name varchar(191)
+  lpout_vendor_id bigint
+  lpout_trn_no varchar(191)
+  lpout_kindly_attn varchar(191)
+  lpout_date date
+  lpout_payment_type varchar(191)
+  lpout_cheque_date date
+  lpout_vat int [default: '0']
+  lpout_payment_preference_option varchar(191) [default: 'default']
+  lpout_payment_preference varchar(191)
+  lpout_pdc_number_of_days int
+  lpout_pdc_payment_option varchar(191)
+  lpout_items longtext
+  lpout_pricing_mode varchar(191) [not null, default: 'unit']
+  lpout_manual_total decimal(15,2)
+  has_item_code boolean [not null, default: '0']
+  lpout_terms longtext
+  payment_preference text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table orders [note: 'Procurement'] {
+  id bigint [pk, increment, not null]
+  date date [not null]
+  trn varchar(191) [not null]
+  vendor_id int [not null]
+  attn varchar(191)
+  ship_to varchar(191)
+  address text
+  contact varchar(191)
+  ref_no varchar(191)
+  total_amount decimal(14,2) [not null, default: '0.00']
+  discount decimal(14,2) [not null, default: '0.00']
+  total_after_discount decimal(14,2) [not null, default: '0.00']
+  vat decimal(14,2) [not null, default: '0.00']
+  total_with_vat decimal(14,2) [not null, default: '0.00']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table order_items [note: 'Procurement'] {
+  id bigint [pk, increment, not null]
+  order_id bigint [not null, ref: > orders.id]
+  item_description varchar(191) [not null]
+  unit varchar(191)
+  quantity float [not null]
+  unit_price float [not null]
+  total float [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table payment_invoices [note: 'Procurement'] {
+  id int [pk, increment, not null]
+  type varchar(191)
+  invoice_no varchar(191)
+  lpoout_id int [ref: > lpoouts.id]
+  invoice_request_id int
+  vendor_id int
+  project_id int
+  start_date date
+  end_date date
+  amount float [not null]
+  vat float [not null]
+  total_amount float [not null]
+  note text
+  status int [not null, default: '0']
+  is_historical boolean [not null, default: '0']
+  source_reference varchar(191)
+  source_date date
+  historical_party varchar(191)
+  historical_project varchar(191)
+  created_by bigint
+  document_path varchar(191)
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ────────────────────────────────────────────
+// INVOICING & FINANCE
+// ────────────────────────────────────────────
+
+Table invoices [note: 'Invoicing & Finance'] {
+  id int [pk, increment, not null]
+  invoice_no varchar(191) [not null]
+  invoice_type_id int [not null, ref: > invoice_types.id]
+  quotation_id int [not null, ref: > quotations.id]
+  invoice_request_id int [not null]
+  start_date date
+  end_date date
+  delivery_date date
+  currency varchar(191) [not null, default: 'AED']
+  payment_terms varchar(191)
+  amount_in_word varchar(191)
+  note1 text
+  note2 text
+  invoice_bank_id int [not null, default: '0']
+  amount float [not null, default: '0']
+  vat float [not null, default: '0']
+  total_amount float [not null, default: '0']
+  status int [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table invoice_types [note: 'Invoicing & Finance'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table invoice_banks [note: 'Invoicing & Finance'] {
+  id int [pk, increment, not null]
+  beneficary_account_name varchar(191) [not null]
+  bank_name varchar(191) [not null]
+  bank_branch varchar(191)
+  account_no varchar(191) [not null]
+  account_currency varchar(191) [not null]
+  iban_no varchar(191)
+  swift_code varchar(191)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table invoice_product_details [note: 'Invoicing & Finance'] {
+  id int [pk, increment, not null]
+  invoice_id int [not null, ref: > invoices.id]
+  product varchar(191) [not null]
+  unit varchar(191)
+  qty int [not null]
+  rate float [not null]
+  amount float [not null]
+  vat float [not null]
+  total_amount float [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table invoice_service_details [note: 'Invoicing & Finance'] {
+  id int [pk, increment, not null]
+  invoice_id int [not null, ref: > invoices.id]
+  description text [not null]
+  amount float [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table invoice_requests [note: 'Invoicing & Finance'] {
+  id int [pk, increment, not null]
+  user_id bigint [not null, ref: > users.id]
+  requestable_id int [not null]
+  requestable_type varchar(191) [not null]
+  note text
+  payment_terms varchar(191)
+  delivery_date date
+  status int [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table invoice_request_products [note: 'Invoicing & Finance'] {
+  id int [pk, increment, not null]
+  request_id int [not null, ref: > invoice_requests.id]
+  product varchar(191) [not null]
+  unit varchar(191)
+  qty int [not null]
+  rate float [not null]
+  amount float [not null]
+  vat float [not null]
+  total_amount float [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ────────────────────────────────────────────
+// ACCOUNTING & PAYMENTS
+// ────────────────────────────────────────────
+
+Table payment_bookings [note: 'Accounting & Payments'] {
+  id int [pk, increment, not null]
+  reference_no varchar(40) [not null]
+  booking_type varchar(10) [not null]
+  payee varchar(191) [not null]
+  payment_against varchar(191)
+  purpose text
+  amount decimal(15,2) [not null, default: '0.00']
+  project_cost_centre varchar(191)
+  booking_date date
+  cheque_number varchar(60)
+  cheque_date date
+  bank_account varchar(191)
+  release_date date
+  cash_account varchar(191)
+  payment_date date
+  status int [not null, default: '0']
+  created_by bigint
+  submitted_at timestamp
+  verified_at timestamp
+  approved_at timestamp
+  rejected_at timestamp
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+
+Table payment_booking_approvals [note: 'Accounting & Payments'] {
+  id int [pk, increment, not null]
+  payment_booking_id int [not null, ref: > payment_bookings.id]
+  level int [not null]
+  user_id bigint [not null, ref: > users.id]
+  decision int [not null]
+  note text
+  decided_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table balance_accounts [note: 'Accounting & Payments'] {
+  id bigint [pk, increment, not null]
+  balance float [not null, default: '0']
+  type varchar(191) [not null]
+  user_id bigint [default: '1']
+  code varchar(191)
+  account_type varchar(191)
+}
+
+Table balance_transactions [note: 'Accounting & Payments'] {
+  id bigint [pk, increment, not null]
+  account_id bigint [not null, ref: > balance_accounts.id]
+  extra_account_id bigint
+  amount float [not null, default: '0']
+  data longtext
+  created_at timestamp [not null, default: 'current_timestamp()']
+  reference_type varchar(191)
+  reference_id bigint
+}
+
+Table transactions [note: 'Accounting & Payments'] {
+  id int [pk, increment, not null]
+  date_time timestamp [not null, default: 'current_timestamp()']
+  type varchar(191) [not null]
+  transactionable_id int
+  transactionable_type varchar(191)
+  expense_account int
+  account_id int [not null]
+  transaction_type int [not null]
+  payment_type int [not null]
+  payment_no varchar(191)
+  clearance_date varchar(191)
+  bank_name varchar(191)
+  vat float [not null]
+  amount float [not null]
+  total float [not null]
+  note text
+  from_account int
+  status int [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table petty_cashes [note: 'Accounting & Payments'] {
+  id int [pk, increment, not null]
+  voucher_no varchar(191)
+  account_id int [not null]
+  vendor_id int [ref: > vendors.id]
+  user_id bigint
+  project_id int
+  date_time timestamp [not null, default: 'current_timestamp()']
+  type int [not null]
+  description text
+  amount float [not null]
+  vat float [not null]
+  total_amount float [not null]
+  is_advance int
+  is_user_deduction int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table petty_cash_expenses [note: 'Accounting & Payments'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  category varchar(191)
+  amount float
+  date date
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table payrolls [note: 'Accounting & Payments'] {
+  id int [pk, increment, not null]
+  date date
+  member_id int [not null, ref: > staf_profile.id]
+  absents int
+  hours float
+  plus_adjustment float [not null, default: '0']
+  minus_adjustment float [not null, default: '0']
+  total_amount float [not null]
+  note text
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ────────────────────────────────────────────
+// HR & STAFF
+// ────────────────────────────────────────────
+
+Table staf_profile [note: 'HR & Staff'] {
+  id int [pk, increment, not null]
+  name varchar(191)
+  staf_type varchar(191)
+  last_name varchar(191)
+  nationality varchar(191)
+  gender varchar(191)
+  joining_date date
+  dob date
+  passport_expiry date
+  visa_expiry date
+  emirates_id_expiry date
+  labor_card_expiry date
+  driver_permit_expiry date
+  last_vacation_start date
+  last_vacation_end date
+  last_vacation_days int
+  last_increment date
+  last_increment_amount int
+  basic_salary float [not null, default: '0']
+  total_salary float [not null, default: '0']
+  overtime_rate float [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+  mobile_no varchar(191)
+  home_mobile_no varchar(191)
+  exclude_from_expiry boolean [not null, default: '0']
+}
+
+Table staf_dates [note: 'HR & Staff'] {
+  id int [pk, increment, not null]
+  staff_id int [not null]
+  start_date date [not null]
+  end_date date
+  days int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table staff_requests [note: 'HR & Staff'] {
+  id int [pk, increment, not null]
+  staf_id int [not null, ref: > staf_profile.id]
+  type varchar(191)
+  start_date date
+  end_date date
+  advance_money float
+  device_type varchar(191)
+  letter_type varchar(191)
+  note text
+  status boolean [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table request_approvals [note: 'HR & Staff'] {
+  id int [pk, increment, not null]
+  request_type varchar(20) [not null]
+  request_id int [not null]
+  user_id int [not null]
+  decision int [not null]
+  note text
+  decided_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table request_forms [note: 'HR & Staff'] {
+  id int [pk, increment, not null]
+  date_time timestamp [not null, default: 'current_timestamp()']
+  user_id bigint [not null]
+  name varchar(191) [not null]
+  note text [not null]
+  comments text
+  status int [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table letters [note: 'HR & Staff'] {
+  id bigint [pk, increment, not null]
+  ref_no varchar(191)
+  days_deduct int
+  staff_profile_id int [not null, ref: > staf_profile.id]
+  type enum('warning','appreciation','general_notice','poor_performance_notice','accommodation_notice','vehicle_notice','attendance_notice','weather_notice','eid_holidays_notice')
+  title varchar(191) [not null]
+  content text [not null]
+  issued_by varchar(191) [not null]
+  issued_at date [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table monthly_staff_reports [note: 'HR & Staff'] {
+  id bigint [pk, increment, not null]
+  staff_id int [not null, ref: > staf_profile.id]
+  month int [not null]
+  year int [not null]
+  safety_avg float [not null]
+  communication_avg float [not null]
+  attendance_avg float [not null]
+  time_management_avg float [not null]
+  job_responsibility_avg float [not null]
+  material_handling_avg float [not null]
+  document_handling_avg float [not null]
+  competency_avg float [not null]
+  final_score float [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table staff_ratings [note: 'HR & Staff'] {
+  id bigint [pk, increment, not null]
+  staff_id int [not null, ref: > staf_profile.id]
+  engineer_id bigint [not null, ref: > users.id]
+  month int [not null]
+  year int [not null]
+  safety_compliance int [not null]
+  communication int [not null]
+  attendance int [not null]
+  time_management int [not null]
+  job_responsibility int [not null]
+  material_handling int [not null]
+  document_handling int [not null]
+  competency int [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table tickets [note: 'HR & Staff'] {
+  id bigint [pk, increment, not null]
+  staf_id int [not null, ref: > staf_profile.id]
+  ticket_date date [not null]
+  agent_name varchar(191) [not null]
+  travel_type enum('one way','two way') [not null]
+  travel_date date [not null]
+  return_date date
+  amount decimal(10,2) [not null]
+  vat decimal(10,2) [not null]
+  total_value decimal(10,2) [not null]
+  payment_status varchar(191)
+  created_at timestamp
+  updated_at timestamp
+  updated_by bigint
+}
+
+Table employees [note: 'HR & Staff'] {
+  id int [pk, increment, not null]
+  name varchar(191) [not null]
+  email varchar(191)
+  code varchar(191)
+  contact_no varchar(191)
+  balance float [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table labor_requests [note: 'HR & Staff'] {
+  id int [pk, increment, not null]
+  labor_id int [not null, ref: > employees.id]
+  type varchar(191)
+  start_date date
+  end_date date
+  advance_money float
+  note text
+  status boolean [not null, default: '0']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table labour_assignments [note: 'HR & Staff'] {
+  id bigint [pk, increment, not null]
+  labor_id int [not null, ref: > employees.id]
+  project_id int [not null, ref: > projects.id]
+  visit_schedule_id bigint [ref: > visit_schedules.id]
+  assignment_start_date date
+  assignment_end_date date
+  created_at timestamp
+  updated_at timestamp
+  hours_worked int
+  overtime_hours int [not null, default: '0']
+}
+
+// ────────────────────────────────────────────
+// ATTENDANCE & SITES
+// ────────────────────────────────────────────
+
+Table sites [note: 'Attendance & Sites'] {
+  id bigint [pk, increment, not null]
+  site_name varchar(191) [not null]
+  engineer_id bigint [not null, ref: > users.id]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table attendances [note: 'Attendance & Sites'] {
+  id bigint [pk, increment, not null]
+  labor_id int
+  foreman_id bigint [not null]
+  approved_by bigint [ref: > users.id]
+  attendance_date date [not null]
+  status enum('pending','approved','rejected') [not null, default: 'pending']
+  notes text
+  marked_at timestamp
+  approved_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table attendance_approvals [note: 'Attendance & Sites'] {
+  id bigint [pk, increment, not null]
+  attendance_id bigint [not null, ref: > attendances.id]
+  approved_by bigint [not null, ref: > users.id]
+  action enum('approved','rejected') [not null]
+  informed enum('informed','uninformed')
+  specific_reason varchar(191)
+  reason text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table attendance_labor_details [note: 'Attendance & Sites'] {
+  id bigint [pk, increment, not null]
+  attendance_id bigint [not null, ref: > attendances.id]
+  labor_id int [not null, ref: > employees.id]
+  overtime_hours decimal(5,2) [not null, default: '0.00']
+  site_id bigint
+  custom_site_name varchar(191)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table attendance_sessions [note: 'Attendance & Sites'] {
+  id bigint [pk, increment, not null]
+  user_id bigint [not null, ref: > users.id]
+  session_date date [not null]
+  clock_in_time datetime [not null]
+  clock_in_latitude decimal(10,8) [not null]
+  clock_in_longitude decimal(11,8) [not null]
+  clock_in_distance_meters decimal(8,2)
+  clock_out_time datetime
+  clock_out_latitude decimal(10,8)
+  clock_out_longitude decimal(11,8)
+  clock_out_distance_meters decimal(8,2)
+  duration_minutes int
+  shift_window enum('shift_1','shift_2') [not null]
+  is_late boolean [not null, default: '0']
+  work_mode enum('split_shift','continuous') [not null, default: 'split_shift']
+  session_status enum('open','closed') [not null, default: 'open']
+  notes text
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+
+Table qr_staff_attendances [note: 'Attendance & Sites'] {
+  id bigint [pk, increment, not null]
+  staff_id bigint [not null, ref: > staf_profile.id]
+  scanned_by bigint [not null, ref: > users.id]
+  site_id bigint
+  custom_site_name varchar(191)
+  attendance_date date [not null]
+  check_in_time datetime [not null]
+  check_out_time datetime
+  duration_minutes int
+  overtime_minutes int [not null, default: '0']
+  shift_end_time time [not null, default: '17:00:00']
+  status enum('checked_in','checked_out') [not null, default: 'checked_in']
+  review_status enum('pending','approved','rejected') [not null, default: 'pending']
+  reviewed_by bigint
+  reviewed_at datetime
+  review_notes text
+  final_overtime_source enum('manual','qr','custom')
+  final_overtime_minutes int
+  finalized_by bigint
+  finalized_at datetime
+  final_decision_notes text
+  notes text
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+
+// ────────────────────────────────────────────
+// PLATFORM
+// ────────────────────────────────────────────
+
+Table media [note: 'Platform'] {
+  id bigint [pk, increment, not null]
+  model_type varchar(191) [not null]
+  model_id bigint [not null]
+  collection_name varchar(191) [not null]
+  name varchar(191) [not null]
+  file_name varchar(191) [not null]
+  mime_type varchar(191)
+  disk varchar(191) [not null]
+  size bigint [not null]
+  manipulations longtext [not null]
+  custom_properties longtext [not null]
+  responsive_images longtext [not null]
+  order_column int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table notifications [note: 'Platform'] {
+  id char [pk, not null]
+  type varchar(191) [not null]
+  notifiable_type varchar(191) [not null]
+  notifiable_id bigint [not null]
+  data text [not null]
+  read_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table comments [note: 'Platform'] {
+  id int [pk, increment, not null]
+  commentable_id bigint [not null]
+  commentable_type varchar(191) [not null]
+  comments text [not null]
+  status int [not null, default: '0']
+  user_id int [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table device_tokens [note: 'Platform'] {
+  id int [pk, increment, not null]
+  user_id bigint [not null, ref: > users.id]
+  token varchar(512) [not null]
+  platform varchar(20) [not null, default: 'android']
+  device_name varchar(191)
+  last_used_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table lookups [note: 'Platform'] {
+  id bigint [pk, increment, not null]
+  name varchar(191) [not null]
+  tag varchar(191) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table documents [note: 'Platform'] {
+  id bigint [pk, increment, not null]
+  name varchar(191) [not null]
+  type varchar(191) [not null]
+  date date
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table tasks [note: 'Platform'] {
+  id bigint [pk, increment, not null]
+  start_date datetime
+  end_date datetime
+  title varchar(191)
+  assigned bigint
+  description varchar(191)
+  status boolean [default: '1']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table failed_jobs [note: 'Platform'] {
+  id bigint [pk, increment, not null]
+  connection text [not null]
+  queue text [not null]
+  payload longtext [not null]
+  exception longtext [not null]
+  failed_at timestamp [not null, default: 'current_timestamp()']
+}
+
+// ────────────────────────────────────────────
+// SYSTEM / OTHER TABLES
+// ────────────────────────────────────────────
+
+Table migrations {
+  id int [pk, not null]
+  migration varchar(191) [not null]
+  batch int [not null]
+}
+
+
+// ════════════════════════════════════════════════════════════
+// FOREIGN KEY REFERENCES (Explicit Ref blocks)
+// ════════════════════════════════════════════════════════════
+
+Ref: model_has_roles.model_id > users.id
+Ref: model_has_roles.role_id > roles.id
+Ref: model_has_permissions.model_id > users.id
+Ref: model_has_permissions.permission_id > permissions.id
+Ref: role_has_permissions.role_id > roles.id
+Ref: role_has_permissions.permission_id > permissions.id
+Ref: inquiries.company_id > companies.id
+Ref: inquiries.user_id > users.id
+Ref: quotations.company_id > companies.id
+Ref: quotations.inquiry_id > inquiries.id
+Ref: quotation_products.quotation_id > quotations.id
+Ref: quotation_products.product_id > products.id
+Ref: projects.quotation_id > quotations.id
+Ref: projects.user_id > users.id
+Ref: project_extension.project_id > projects.id
+Ref: project_extension.quotation_id > quotations.id
+Ref: project_lpoout.project_id > projects.id
+Ref: project_lpoout.lpoout_id > lpoouts.id
+Ref: projectreports.project_id > projects.id
+Ref: projectreports.company_id > companies.id
+Ref: projectreports.visit_schedule_id > visit_schedules.id
+Ref: projectreports.created_by > users.id
+Ref: visit_schedules.project_id > projects.id
+Ref: visit_schedule_comments.visit_schedule_id > visit_schedules.id
+Ref: visit_schedule_history.project_id > projects.id
+Ref: visit_schedule_history.visit_schedule_id > visit_schedules.id
+Ref: drawing_receiveds.project_id > projects.id
+Ref: drawing_received_contributions.drawing_received_id > drawing_receiveds.id
+Ref: drawing_received_contributions.contributed_by_id > users.id
+Ref: invoice_requests.user_id > users.id
+Ref: invoices.quotation_id > quotations.id
+Ref: invoices.invoice_request_id > invoice_requests.id
+Ref: invoices.invoice_type_id > invoice_types.id
+Ref: invoice_product_details.invoice_id > invoices.id
+Ref: invoice_service_details.invoice_id > invoices.id
+Ref: invoice_request_products.request_id > invoice_requests.id
+Ref: vendors.user_id > users.id
+Ref: lpoouts.vendor_id > vendors.id
+Ref: lpoouts.project_id > projects.id
+Ref: lpoins.quotation_id > quotations.id
+Ref: purchase_orders.quotation_id > quotations.id
+Ref: purchase_orders.project_id > projects.id
+Ref: purchase_orders.created_by > users.id
+Ref: order_items.order_id > orders.id
+Ref: payment_invoices.project_id > projects.id
+Ref: payment_invoices.vendor_id > vendors.id
+Ref: payment_invoices.lpoout_id > lpoouts.id
+Ref: payment_invoices.invoice_request_id > invoice_requests.id
+Ref: payment_bookings.user_id > users.id
+Ref: payment_booking_approvals.payment_booking_id > payment_bookings.id
+Ref: payment_booking_approvals.user_id > users.id
+Ref: transactions.account_id > balance_accounts.id
+Ref: balance_transactions.account_id > balance_accounts.id
+Ref: petty_cashes.account_id > balance_accounts.id
+Ref: petty_cashes.vendor_id > vendors.id
+Ref: petty_cashes.project_id > projects.id
+Ref: petty_cashes.user_id > users.id
+Ref: staf_profile.user_id > users.id
+Ref: staff_requests.staf_id > staf_profile.id
+Ref: request_approvals.user_id > users.id
+Ref: letters.staff_profile_id > staf_profile.id
+Ref: monthly_staff_reports.staff_id > staf_profile.id
+Ref: staff_ratings.staff_id > staf_profile.id
+Ref: staff_ratings.engineer_id > users.id
+Ref: tickets.staf_id > staf_profile.id
+Ref: payrolls.member_id > staf_profile.id
+Ref: staf_dates.staff_id > staf_profile.id
+Ref: labor_requests.labor_id > employees.id
+Ref: labour_assignments.labor_id > employees.id
+Ref: labour_assignments.project_id > projects.id
+Ref: labour_assignments.visit_schedule_id > visit_schedules.id
+Ref: sites.engineer_id > users.id
+Ref: attendances.approved_by > users.id
+Ref: attendance_approvals.attendance_id > attendances.id
+Ref: attendance_approvals.approved_by > users.id
+Ref: attendance_labor_details.attendance_id > attendances.id
+Ref: attendance_labor_details.labor_id > employees.id
+Ref: attendance_labor_details.site_id > sites.id
+Ref: attendance_sessions.user_id > users.id
+Ref: qr_staff_attendances.staff_id > staf_profile.id
+Ref: qr_staff_attendances.scanned_by > users.id
+Ref: qr_staff_attendances.site_id > sites.id
+Ref: inquiry_department_reviews.inquiry_id > inquiries.id
+Ref: inquiry_engineer_reports.inquiry_id > inquiries.id
+Ref: inquiry_follow_ups.inquiry_id > inquiries.id
+Ref: inquiry_quotations.inquiry_id > inquiries.id
+Ref: comments.user_id > users.id
+Ref: device_tokens.user_id > users.id

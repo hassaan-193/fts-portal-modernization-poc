@@ -1,0 +1,1269 @@
+@startuml FTS_Portal_Class_Diagram
+' Auto-generated from live MySQL schema — ft_portal_base
+' Tables: 80 | Relationships: 86
+
+!theme plain
+skinparam backgroundColor #F7F9FC
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam classFontSize 11
+skinparam classAttributeFontSize 10
+skinparam classFontName DejaVu Sans
+skinparam ArrowColor #546E7A
+skinparam ArrowFontSize 9
+skinparam packageBorderColor #90A4AE
+skinparam packageFontSize 12
+skinparam packageFontStyle bold
+hide empty methods
+
+package "Auth RBAC" #C8E6C9 {
+  class users {
+    + id : int {PK}
+    + name : string?
+    + email : string
+    + email_verified_at : datetime?
+    + password : string
+    + image : string?
+    + remember_token : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+    + firebase_token : string?
+    + api_token : string?
+    + staf_profile_id : int? {FK}
+    + balance : decimal
+    + deleted_at : datetime?
+  }
+
+  class roles {
+    + id : int {PK}
+    + name : string
+    + guard_name : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class permissions {
+    + id : int {PK}
+    + name : string
+    + guard_name : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class model_has_roles {
+    + role_id : int {PK}
+    + model_type : string {PK}
+    + model_id : int {PK}
+  }
+
+  class model_has_permissions {
+    + permission_id : int {PK}
+    + model_type : string {PK}
+    + model_id : int {PK}
+  }
+
+  class role_has_permissions {
+    + permission_id : int {PK}
+    + role_id : int {PK}
+  }
+
+}
+
+package "Client CRM" #BBDEFB {
+  class companies {
+    + id : int {PK}
+    + name : string
+    + email : string?
+    + contact_person : string?
+    + contact_no : string?
+    + contact_no_two : string?
+    + vat_no : string?
+    + location : text?
+    + file : text?
+    + billing_address : text?
+    + billing_contact_person : string?
+    + billing_pob : string?
+    + billing_email : string?
+    + shipping_address : string?
+    + shipping_contact_person : string?
+    + shipping_pob : string?
+    + shipping_email : string?
+    + payment_terms : string?
+    + credit_limit : string?
+    + password : string?
+    + remember_token : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class inquiries {
+    + id : int {PK}
+    + inquiry_no : string
+    + created_by : int? {FK}
+    + client_name : string
+    + phone : string
+    + email : string?
+    + location : text?
+    + project : string?
+    + inquiry_type : enum('project','amc','installation','other')
+    + other_type : string?
+    + source : enum('call','email','walk-in','website','referral')
+    + expected_price : decimal?
+    + status : enum('new','assigned','under review','site visit pending','site visit done','sent to sales','quotation created','under follow-up','won','lost','closed')
+    + priority : enum('low','medium','high')
+    + follow_up_date : date?
+    + expected_closing_date : date?
+    + assigned_department : string?
+    + notes : text?
+    + metadata : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class inquiry_department_reviews {
+    + id : int {PK}
+    + inquiry_id : int
+    + assigned_department : string
+    + assigned_to : int? {FK}
+    + assignment_date : datetime?
+    + current_status : string?
+    + internal_comments : text?
+    + priority : enum('low','medium','high')
+    + response_deadline : datetime?
+    + technical_review_status : string?
+    + site_visit_required : int
+    + proposed_visit_date : date?
+    + visit_assigned_to : int? {FK}
+    + visit_notes : text?
+    + reviewed_by : int? {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class inquiry_engineer_reports {
+    + id : int {PK}
+    + inquiry_id : int
+    + visit_completed : int
+    + site_condition_notes : text?
+    + scope_understanding : text?
+    + materials_required : text?
+    + challenges_risks : text?
+    + estimated_cost : decimal?
+    + submitted_by : int? {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class inquiry_follow_ups {
+    + id : int {PK}
+    + inquiry_id : int {FK}
+    + follow_up_date : date
+    + follow_up_notes : text?
+    + client_feedback : text?
+    + status : string?
+    + created_by : int? {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class inquiry_quotations {
+    + id : int {PK}
+    + inquiry_id : int
+    + quotation_amount : decimal?
+    + scope_of_work : text?
+    + terms_conditions : text?
+    + validity_date : date?
+    + created_by : int? {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class inquiry_routing_configs {
+    + id : int {PK}
+    + inquiry_type : string
+    + department : string
+    + is_active : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+}
+
+package "Quotations" #FFF9C4 {
+  class quotations {
+    + id : int {PK}
+    + reference_project_id : int? {FK}
+    + name : string
+    + company_id : int {FK}
+    + ref_no : string?
+    + quotation_type_id : int?
+    + quotation_company : int?
+    + amount : decimal
+    + vat : decimal
+    + total_amount : decimal
+    + date : date?
+    + subject : string?
+    + location : text?
+    + file : text?
+    + payment : text?
+    + exclusion : text?
+    + status : int
+    + approved_by : int? {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+    + category : string?
+    + number_of_visits : int?
+  }
+
+  class quotation_products {
+    + id : int {PK}
+    + quotation_id : int {FK}
+    + product_id : int {FK}
+    + quantity : int
+    + unit_price : decimal
+    + total_price : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class products {
+    + id : int {PK}
+    + name : string
+    + price : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class lpoins {
+    + id : int {PK}
+    + quotation_id : int {FK}
+    + ref_no : string?
+    + payment_terms : string?
+    + civil_defence_fee : decimal
+    + government_fee : decimal
+    + adjustment_fee : decimal
+    + date_issue : date?
+    + date_due : date?
+    + amount : decimal?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+}
+
+package "Projects AMC" #FFE0B2 {
+  class projects {
+    + id : int {PK}
+    + date : date?
+    + quotation_id : int {FK}
+    + project_type_id : int
+    + subject : string?
+    + payment_terms : string?
+    + labour_charges : decimal?
+    + material_charges : decimal?
+    + project_source : string?
+    + project_estimation : string?
+    + user_id : int?
+    + note : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+    + category : string
+    + visits : int?
+    + visit_schedule : text?
+  }
+
+  class project_types {
+    + id : int {PK}
+    + name : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class project_extension {
+    + id : int {PK}
+    + name : string
+    + value : decimal
+    + project_id : int {FK}
+    + quotation_id : int {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class project_lpoout {
+    + id : int {PK}
+    + project_id : int {FK}
+    + lpoout_id : int {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class projectreports {
+    + id : int {PK}
+    + reference_number : string
+    + date : date
+    + inspector_visiting_time : time?
+    + inspector_leaving_time : time?
+    + company_id : int? {FK}
+    + is_manual_client : int
+    + manual_client_name : string?
+    + project_id : int? {FK}
+    + visit_schedule_id : int? {FK}
+    + is_emergency_visit : int
+    + emergency_visit_date : date?
+    + amc_type : enum('existing','new')
+    + site_location : string?
+    + site_name : string?
+    + used_items : text?
+    + required_items : text?
+    + block_info : text?
+    + note : text?
+    + client_signature : text?
+    + file_path : text?
+    + status : enum('draft','pending','approved','disapproved')
+    + created_by : int? {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+    + fire_alarm_data : text?
+    + fire_fighting_data : text?
+    + fm200_data : text?
+    + foam_tank_data : text?
+    + voice_evacuation_data : text?
+    + emergency_lighting_data : text?
+    + system_interfacing_data : text?
+    + exit_route_data : text?
+    + storage_conditions_data : text?
+    + pump_data : text?
+    + deluge_data : text?
+    + urgent_summary : text?
+    + photos_data : text?
+    + scope_data : text?
+    + next_due_dates : text?
+    + notes_used_items : text?
+    + next_inspection_due : date?
+    + expiry_update_required_on : date?
+    + client_eid_details : string?
+    + client_phone : string?
+  }
+
+  class amc_report_system_items {
+    + id : int {PK}
+    + system_key : string {FK}
+    + item_slug : string
+    + item_label : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class visit_schedules {
+    + id : int {PK}
+    + project_id : int {FK}
+    + visit_date : date
+    + status : enum('pending','done','upcoming')
+    + file_uploaded : int
+    + file_path : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class visit_schedule_comments {
+    + id : int {PK}
+    + visit_schedule_id : int {FK}
+    + comment : text
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class visit_schedule_history {
+    + id : int {PK}
+    + project_id : int {FK}
+    + visit_schedule_id : int? {FK}
+    + visit_date : date?
+    + status : string
+    + company_name : string
+    + project_name : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class drawing_receiveds {
+    + id : int {PK}
+    + lpoin_id : int {FK}
+    + responsible_engineer_id : int {FK}
+    + type_of_work : string
+    + start_date : date
+    + review_comments_date : date?
+    + approval_date : date?
+    + status : string {FK}
+    + notes : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class drawing_received_contributions {
+    + id : int {PK}
+    + drawing_received_id : int {FK}
+    + contributed_by_id : int {FK}
+    + contribution_type : string {FK}
+    + description : text?
+    + status : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+}
+
+package "Procurement" #F8BBD9 {
+  class vendors {
+    + id : int {PK}
+    + name : string
+    + email : string?
+    + emails : text?
+    + contact_person : string?
+    + contact_no : string?
+    + contact_no_two : string?
+    + vat_no : string?
+    + payment_terms : string?
+    + terms_and_conditions : text?
+    + credit_limit : string?
+    + location : text?
+    + file : text?
+    + payment_preference : string
+    + pdc_number_of_days : int?
+    + pdc_payment_option : string?
+    + vendor_specialization : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class lpoouts {
+    + id : int {PK}
+    + lpo_invoice_no : string?
+    + name : string
+    + lpo_out_type_id : int {FK}
+    + project_id : int? {FK}
+    + vendor_id : int {FK}
+    + trn_no : string?
+    + kindly_attn : string?
+    + date : date?
+    + amount : decimal
+    + terms : text?
+    + payment_type : string?
+    + cheque_date : date?
+    + items : text?
+    + pricing_mode : string
+    + has_item_code : int
+    + status : enum('pending','approved','not approved')
+    + revision_number : int
+    + parent_lpoout_id : int?
+    + is_latest_revision : int
+    + revised_by : int?
+    + revision_reason : text?
+    + revised_at : datetime?
+    + lpo_payment_preference_option : string
+    + lpo_payment_preference : string?
+    + lpo_pdc_number_of_days : int?
+    + lpo_pdc_payment_option : string?
+    + vat : decimal
+    + total_amount : decimal
+    + file : text
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class lpo_out_types {
+    + id : int {PK}
+    + name : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class purchase_orders {
+    + id : int {PK}
+    + request_number : string
+    + request_type : string
+    + quotation_id : int?
+    + project_id : int?
+    + other_info : text?
+    + created_by : int?
+    + date : date?
+    + due_date : date?
+    + delivery_date : date?
+    + items : text?
+    + total_amount : decimal
+    + status : string
+    + urgency_level : enum('normal','urgent')
+    + department_status : string
+    + department_notes : text?
+    + sent_back_notes : text?
+    + sent_back_at : datetime?
+    + sent_back_by : int?
+    + sent_back_count : int
+    + admin_id : int?
+    + admin_notes : text?
+    + lpout_id : int? {FK}
+    + revised_from_lpoout_id : int? {FK}
+    + lpout_name : string?
+    + lpout_vendor_id : int?
+    + lpout_trn_no : string?
+    + lpout_kindly_attn : string?
+    + lpout_date : date?
+    + lpout_payment_type : string?
+    + lpout_cheque_date : date?
+    + lpout_vat : int?
+    + lpout_payment_preference_option : string?
+    + lpout_payment_preference : string?
+    + lpout_pdc_number_of_days : int?
+    + lpout_pdc_payment_option : string?
+    + lpout_items : text?
+    + lpout_pricing_mode : string
+    + lpout_manual_total : decimal?
+    + has_item_code : int
+    + lpout_terms : text?
+    + payment_preference : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class orders {
+    + id : int {PK}
+    + date : date
+    + trn : string
+    + vendor_id : int {FK}
+    + attn : string?
+    + ship_to : string?
+    + address : text?
+    + contact : string?
+    + ref_no : string?
+    + total_amount : decimal
+    + discount : decimal
+    + total_after_discount : decimal
+    + vat : decimal
+    + total_with_vat : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class order_items {
+    + id : int {PK}
+    + order_id : int {FK}
+    + item_description : string
+    + unit : string?
+    + quantity : decimal
+    + unit_price : decimal
+    + total : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class payment_invoices {
+    + id : int {PK}
+    + type : string?
+    + invoice_no : string?
+    + lpoout_id : int? {FK}
+    + invoice_request_id : int?
+    + vendor_id : int?
+    + project_id : int?
+    + start_date : date?
+    + end_date : date?
+    + amount : decimal
+    + vat : decimal
+    + total_amount : decimal
+    + note : text?
+    + status : int
+    + is_historical : int
+    + source_reference : string?
+    + source_date : date?
+    + historical_party : string?
+    + historical_project : string?
+    + created_by : int?
+    + document_path : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+}
+
+package "Invoicing" #D1C4E9 {
+  class invoices {
+    + id : int {PK}
+    + invoice_no : string
+    + invoice_type_id : int {FK}
+    + quotation_id : int {FK}
+    + invoice_request_id : int
+    + start_date : date?
+    + end_date : date?
+    + delivery_date : date?
+    + currency : string
+    + payment_terms : string?
+    + amount_in_word : string?
+    + note1 : text?
+    + note2 : text?
+    + invoice_bank_id : int
+    + amount : decimal
+    + vat : decimal
+    + total_amount : decimal
+    + status : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class invoice_types {
+    + id : int {PK}
+    + name : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class invoice_banks {
+    + id : int {PK}
+    + beneficary_account_name : string
+    + bank_name : string
+    + bank_branch : string?
+    + account_no : string
+    + account_currency : string
+    + iban_no : string?
+    + swift_code : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class invoice_product_details {
+    + id : int {PK}
+    + invoice_id : int {FK}
+    + product : string
+    + unit : string?
+    + qty : int
+    + rate : decimal
+    + amount : decimal
+    + vat : decimal
+    + total_amount : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class invoice_service_details {
+    + id : int {PK}
+    + invoice_id : int {FK}
+    + description : text
+    + amount : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class invoice_requests {
+    + id : int {PK}
+    + user_id : int {FK}
+    + requestable_id : int
+    + requestable_type : string
+    + note : text?
+    + payment_terms : string?
+    + delivery_date : date?
+    + status : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class invoice_request_products {
+    + id : int {PK}
+    + request_id : int {FK}
+    + product : string
+    + unit : string?
+    + qty : int
+    + rate : decimal
+    + amount : decimal
+    + vat : decimal
+    + total_amount : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+}
+
+package "Accounting Payments" #B2EBF2 {
+  class payment_bookings {
+    + id : int {PK}
+    + reference_no : string
+    + booking_type : string {FK}
+    + payee : string
+    + payment_against : string?
+    + purpose : text?
+    + amount : decimal
+    + project_cost_centre : string?
+    + booking_date : date?
+    + cheque_number : string?
+    + cheque_date : date?
+    + bank_account : string?
+    + release_date : date? {FK}
+    + cash_account : string?
+    + payment_date : date? {FK}
+    + status : int {FK}
+    + created_by : int? {FK}
+    + submitted_at : datetime?
+    + verified_at : datetime?
+    + approved_at : datetime?
+    + rejected_at : datetime?
+    + created_at : datetime?
+    + updated_at : datetime?
+    + deleted_at : datetime?
+  }
+
+  class payment_booking_approvals {
+    + id : int {PK}
+    + payment_booking_id : int {FK}
+    + level : int
+    + user_id : int {FK}
+    + decision : int
+    + note : text?
+    + decided_at : datetime?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class balance_accounts {
+    + id : int {PK}
+    + balance : decimal
+    + type : string {FK}
+    + user_id : int? {FK}
+    + code : string?
+    + account_type : string?
+  }
+
+  class balance_transactions {
+    + id : int {PK}
+    + account_id : int {FK}
+    + extra_account_id : int? {FK}
+    + amount : decimal
+    + data : text?
+    + created_at : datetime
+    + reference_type : string? {FK}
+    + reference_id : int? {FK}
+  }
+
+  class transactions {
+    + id : int {PK}
+    + date_time : datetime
+    + type : string
+    + transactionable_id : int?
+    + transactionable_type : string?
+    + expense_account : int?
+    + account_id : int
+    + transaction_type : int
+    + payment_type : int
+    + payment_no : string?
+    + clearance_date : string?
+    + bank_name : string?
+    + vat : decimal
+    + amount : decimal
+    + total : decimal
+    + note : text?
+    + from_account : int?
+    + status : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class petty_cashes {
+    + id : int {PK}
+    + voucher_no : string?
+    + account_id : int
+    + vendor_id : int? {FK}
+    + user_id : int?
+    + project_id : int?
+    + date_time : datetime
+    + type : int
+    + description : text?
+    + amount : decimal
+    + vat : decimal
+    + total_amount : decimal
+    + is_advance : int?
+    + is_user_deduction : int?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class petty_cash_expenses {
+    + id : int {PK}
+    + name : string
+    + category : string?
+    + amount : decimal?
+    + date : date?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class payrolls {
+    + id : int {PK}
+    + date : date?
+    + member_id : int {FK}
+    + absents : int?
+    + hours : decimal?
+    + plus_adjustment : decimal
+    + minus_adjustment : decimal
+    + total_amount : decimal
+    + note : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+}
+
+package "HR Staff" #DCEDC8 {
+  class staf_profile {
+    + id : int {PK}
+    + name : string?
+    + staf_type : string?
+    + last_name : string?
+    + nationality : string?
+    + gender : string?
+    + joining_date : date?
+    + dob : date?
+    + passport_expiry : date?
+    + visa_expiry : date?
+    + emirates_id_expiry : date?
+    + labor_card_expiry : date?
+    + driver_permit_expiry : date?
+    + last_vacation_start : date?
+    + last_vacation_end : date?
+    + last_vacation_days : int?
+    + last_increment : date?
+    + last_increment_amount : int?
+    + basic_salary : decimal
+    + total_salary : decimal
+    + overtime_rate : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+    + mobile_no : string?
+    + home_mobile_no : string?
+    + exclude_from_expiry : int
+  }
+
+  class staf_dates {
+    + id : int {PK}
+    + staff_id : int
+    + start_date : date
+    + end_date : date?
+    + days : int?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class staff_requests {
+    + id : int {PK}
+    + staf_id : int {FK}
+    + type : string?
+    + start_date : date?
+    + end_date : date?
+    + advance_money : decimal?
+    + device_type : string?
+    + letter_type : string?
+    + note : text?
+    + status : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class request_approvals {
+    + id : int {PK}
+    + request_type : string {FK}
+    + request_id : int
+    + user_id : int
+    + decision : int
+    + note : text?
+    + decided_at : datetime?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class request_forms {
+    + id : int {PK}
+    + date_time : datetime
+    + user_id : int {FK}
+    + name : string
+    + note : text
+    + comments : text?
+    + status : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class letters {
+    + id : int {PK}
+    + ref_no : string?
+    + days_deduct : int?
+    + staff_profile_id : int {FK}
+    + type : enum('warning','appreciation','general_notice','poor_performance_notice','accommodation_notice','vehicle_notice','attendance_notice','weather_notice','eid_holidays_notice')?
+    + title : string
+    + content : text
+    + issued_by : string
+    + issued_at : date
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class monthly_staff_reports {
+    + id : int {PK}
+    + staff_id : int {FK}
+    + month : int
+    + year : int
+    + safety_avg : decimal
+    + communication_avg : decimal
+    + attendance_avg : decimal
+    + time_management_avg : decimal
+    + job_responsibility_avg : decimal
+    + material_handling_avg : decimal
+    + document_handling_avg : decimal
+    + competency_avg : decimal
+    + final_score : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class staff_ratings {
+    + id : int {PK}
+    + staff_id : int {FK}
+    + engineer_id : int {FK}
+    + month : int
+    + year : int
+    + safety_compliance : int
+    + communication : int
+    + attendance : int
+    + time_management : int
+    + job_responsibility : int
+    + material_handling : int
+    + document_handling : int
+    + competency : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class tickets {
+    + id : int {PK}
+    + staf_id : int {FK}
+    + ticket_date : date
+    + agent_name : string
+    + travel_type : enum('one way','two way')
+    + travel_date : date
+    + return_date : date?
+    + amount : decimal
+    + vat : decimal
+    + total_value : decimal
+    + payment_status : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+    + updated_by : int? {FK}
+  }
+
+  class employees {
+    + id : int {PK}
+    + name : string
+    + email : string?
+    + code : string?
+    + contact_no : string?
+    + balance : decimal
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class labor_requests {
+    + id : int {PK}
+    + labor_id : int {FK}
+    + type : string?
+    + start_date : date?
+    + end_date : date?
+    + advance_money : decimal?
+    + note : text?
+    + status : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class labour_assignments {
+    + id : int {PK}
+    + labor_id : int {FK}
+    + project_id : int {FK}
+    + visit_schedule_id : int? {FK}
+    + assignment_start_date : date?
+    + assignment_end_date : date?
+    + created_at : datetime?
+    + updated_at : datetime?
+    + hours_worked : int?
+    + overtime_hours : int
+  }
+
+}
+
+package "Attendance Sites" #FFCCBC {
+  class sites {
+    + id : int {PK}
+    + site_name : string
+    + engineer_id : int {FK}
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class attendances {
+    + id : int {PK}
+    + labor_id : int? {FK}
+    + foreman_id : int {FK}
+    + approved_by : int? {FK}
+    + attendance_date : date {FK}
+    + status : enum('pending','approved','rejected') {FK}
+    + notes : text?
+    + marked_at : datetime?
+    + approved_at : datetime?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class attendance_approvals {
+    + id : int {PK}
+    + attendance_id : int {FK}
+    + approved_by : int {FK}
+    + action : enum('approved','rejected')
+    + informed : enum('informed','uninformed')?
+    + specific_reason : string?
+    + reason : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class attendance_labor_details {
+    + id : int {PK}
+    + attendance_id : int {FK}
+    + labor_id : int {FK}
+    + overtime_hours : decimal
+    + site_id : int?
+    + custom_site_name : string?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class attendance_sessions {
+    + id : int {PK}
+    + user_id : int {FK}
+    + session_date : date {FK}
+    + clock_in_time : datetime
+    + clock_in_latitude : decimal
+    + clock_in_longitude : decimal
+    + clock_in_distance_meters : decimal?
+    + clock_out_time : datetime?
+    + clock_out_latitude : decimal?
+    + clock_out_longitude : decimal?
+    + clock_out_distance_meters : decimal?
+    + duration_minutes : int?
+    + shift_window : enum('shift_1','shift_2') {FK}
+    + is_late : int {FK}
+    + work_mode : enum('split_shift','continuous')
+    + session_status : enum('open','closed') {FK}
+    + notes : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+    + deleted_at : datetime?
+  }
+
+  class qr_staff_attendances {
+    + id : int {PK}
+    + staff_id : int {FK}
+    + scanned_by : int {FK}
+    + site_id : int?
+    + custom_site_name : string?
+    + attendance_date : date {FK}
+    + check_in_time : datetime
+    + check_out_time : datetime?
+    + duration_minutes : int?
+    + overtime_minutes : int
+    + shift_end_time : time
+    + status : enum('checked_in','checked_out') {FK}
+    + review_status : enum('pending','approved','rejected') {FK}
+    + reviewed_by : int? {FK}
+    + reviewed_at : datetime?
+    + review_notes : text?
+    + final_overtime_source : enum('manual','qr','custom')? {FK}
+    + final_overtime_minutes : int?
+    + finalized_by : int? {FK}
+    + finalized_at : datetime?
+    + final_decision_notes : text?
+    + notes : text?
+    + created_at : datetime?
+    + updated_at : datetime?
+    + deleted_at : datetime?
+  }
+
+}
+
+package "Platform" #ECEFF1 {
+  class media {
+    + id : int {PK}
+    + model_type : string {FK}
+    + model_id : int
+    + collection_name : string
+    + name : string
+    + file_name : string
+    + mime_type : string?
+    + disk : string
+    + size : int
+    + manipulations : text
+    + custom_properties : text
+    + responsive_images : text
+    + order_column : int?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class notifications {
+    + id : string {PK}
+    + type : string
+    + notifiable_type : string {FK}
+    + notifiable_id : int
+    + data : text
+    + read_at : datetime?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class comments {
+    + id : int {PK}
+    + commentable_id : int
+    + commentable_type : string
+    + comments : text
+    + status : int
+    + user_id : int
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class device_tokens {
+    + id : int {PK}
+    + user_id : int {FK}
+    + token : string
+    + platform : string
+    + device_name : string?
+    + last_used_at : datetime?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class lookups {
+    + id : int {PK}
+    + name : string
+    + tag : string
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class documents {
+    + id : int {PK}
+    + name : string
+    + type : string
+    + date : date?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+  class tasks {
+    + id : int {PK}
+    + start_date : datetime?
+    + end_date : datetime?
+    + title : string?
+    + assigned : int?
+    + description : string?
+    + status : int?
+    + created_at : datetime?
+    + updated_at : datetime?
+  }
+
+}
+
+' ═══════════════════════════════
+' Foreign Key Relationships
+' ═══════════════════════════════
+model_has_roles }o--|| users : model_id
+model_has_roles }o--|| roles : role_id
+model_has_permissions }o--|| users : model_id
+model_has_permissions }o--|| permissions : permission_id
+role_has_permissions }o--|| roles : role_id
+role_has_permissions }o--|| permissions : permission_id
+inquiries }o--|| companies : company_id
+inquiries }o--|| users : user_id
+quotations }o--|| companies : company_id
+quotations }o--|| inquiries : inquiry_id
+quotation_products }o--|| quotations : quotation_id
+quotation_products }o--|| products : product_id
+projects }o--|| quotations : quotation_id
+projects }o--|| users : user_id
+project_extension }o--|| projects : project_id
+project_extension }o--|| quotations : quotation_id
+project_lpoout }o--|| projects : project_id
+project_lpoout }o--|| lpoouts : lpoout_id
+projectreports }o--|| projects : project_id
+projectreports }o--|| companies : company_id
+projectreports }o--|| visit_schedules : visit_schedule_id
+projectreports }o--|| users : created_by
+visit_schedules }o--|| projects : project_id
+visit_schedule_comments }o--|| visit_schedules : visit_schedule_id
+visit_schedule_history }o--|| projects : project_id
+visit_schedule_history }o--|| visit_schedules : visit_schedule_id
+drawing_receiveds }o--|| projects : project_id
+drawing_received_contributions }o--|| drawing_receiveds : drawing_received_id
+drawing_received_contributions }o--|| users : contributed_by_id
+invoice_requests }o--|| users : user_id
+invoices }o--|| quotations : quotation_id
+invoices }o--|| invoice_requests : invoice_request_id
+invoices }o--|| invoice_types : invoice_type_id
+invoice_product_details }o--|| invoices : invoice_id
+invoice_service_details }o--|| invoices : invoice_id
+invoice_request_products }o--|| invoice_requests : request_id
+vendors }o--|| users : user_id
+lpoouts }o--|| vendors : vendor_id
+lpoouts }o--|| projects : project_id
+lpoins }o--|| quotations : quotation_id
+purchase_orders }o--|| quotations : quotation_id
+purchase_orders }o--|| projects : project_id
+purchase_orders }o--|| users : created_by
+order_items }o--|| orders : order_id
+payment_invoices }o--|| projects : project_id
+payment_invoices }o--|| vendors : vendor_id
+payment_invoices }o--|| lpoouts : lpoout_id
+payment_invoices }o--|| invoice_requests : invoice_request_id
+payment_bookings }o--|| users : user_id
+payment_booking_approvals }o--|| payment_bookings : payment_booking_id
+payment_booking_approvals }o--|| users : user_id
+transactions }o--|| balance_accounts : account_id
+balance_transactions }o--|| balance_accounts : account_id
+petty_cashes }o--|| balance_accounts : account_id
+petty_cashes }o--|| vendors : vendor_id
+petty_cashes }o--|| projects : project_id
+petty_cashes }o--|| users : user_id
+staf_profile }o--|| users : user_id
+staff_requests }o--|| staf_profile : staf_id
+request_approvals }o--|| users : user_id
+letters }o--|| staf_profile : staff_profile_id
+monthly_staff_reports }o--|| staf_profile : staff_id
+staff_ratings }o--|| staf_profile : staff_id
+staff_ratings }o--|| users : engineer_id
+tickets }o--|| staf_profile : staf_id
+payrolls }o--|| staf_profile : member_id
+staf_dates }o--|| staf_profile : staff_id
+labor_requests }o--|| employees : labor_id
+labour_assignments }o--|| employees : labor_id
+labour_assignments }o--|| projects : project_id
+labour_assignments }o--|| visit_schedules : visit_schedule_id
+sites }o--|| users : engineer_id
+attendances }o--|| users : approved_by
+attendance_approvals }o--|| attendances : attendance_id
+attendance_approvals }o--|| users : approved_by
+attendance_labor_details }o--|| attendances : attendance_id
+attendance_labor_details }o--|| employees : labor_id
+attendance_labor_details }o--|| sites : site_id
+attendance_sessions }o--|| users : user_id
+qr_staff_attendances }o--|| staf_profile : staff_id
+qr_staff_attendances }o--|| users : scanned_by
+qr_staff_attendances }o--|| sites : site_id
+inquiry_department_reviews }o--|| inquiries : inquiry_id
+inquiry_engineer_reports }o--|| inquiries : inquiry_id
+inquiry_follow_ups }o--|| inquiries : inquiry_id
+inquiry_quotations }o--|| inquiries : inquiry_id
+comments }o--|| users : user_id
+device_tokens }o--|| users : user_id
+
+@enduml
